@@ -1,0 +1,2 @@
+# Symlink that gets created after call to nixos-rebuild.
+result
