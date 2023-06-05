@@ -48,3 +48,8 @@ vim.cmd[[
 vim.cmd[[
     autocmd FileType markdown setlocal tabstop=2 shiftwidth=2 expandtab
 ]]
+
+-- Set tab spacing for nix files.
+vim.cmd[[
+    autocmd FileType nix setlocal tabstop=2 shiftwidth=2 expandtab
+]]
