@@ -51,7 +51,7 @@
 
   # Configure keymap in X11
   services.xserver = {
-layout = "us";
+    layout = "us";
     xkbVariant = "";
   };
 
@@ -90,7 +90,9 @@ layout = "us";
       firefox
       git
       keepassxc
+      ripgrep
       tmux
+      xclip
     ];
   };
 
@@ -109,6 +111,12 @@ layout = "us";
     }
   ];
 
+  # Set up input methods (keyboards).
+  i18n.inputMethod = {
+    enabled = "ibus";
+    ibus.engines = with pkgs.ibus-engines; [ libpinyin ];
+  };
+
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
@@ -118,6 +126,16 @@ layout = "us";
     neovim
     python312
   ];
+
+  # Set environment variables.
+  environment.variables = {
+    # Set IBUS environment variables.
+    GTK_IM_MODULE = "ibus";
+    QT_IM_MODULE = "ibus";
+    XMODIFIERS = "@im=ibus";
+    # Set default editor.
+    VISUAL = "nvim";
+  };
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
