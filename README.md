@@ -1,2 +1,3 @@
-# loadout
-My SWE loadout
+# Loadout
+
+My SWE loadout.
