@@ -94,6 +94,21 @@ layout = "us";
     ];
   };
 
+  # Don't prompt for sudo password.
+  #
+  # Reference: https://discourse.nixos.org/t/dont-prompt-a-user-for-the-sudo-password/9163/2
+  security.sudo.extraRules = [
+    {
+      users = ["alek"];
+      commands = [
+        {
+          command = "ALL";
+          options = ["NOPASSWD"];
+        }
+      ];
+    }
+  ];
+
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
