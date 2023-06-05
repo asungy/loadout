@@ -85,11 +85,12 @@ layout = "us";
     extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs; [
       brave
+      delta
+      dropbox
       firefox
       git
-      tmux
-      dropbox
       keepassxc
+      tmux
     ];
   };
 
