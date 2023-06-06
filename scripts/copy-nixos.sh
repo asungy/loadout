@@ -6,6 +6,8 @@ set -e
 
 root=`dirname $(dirname $(realpath "$0"))`
 nixos_dir="${root}/nixos"
+sudo rm -fr /etc/nixos/*
+sudo nixos-generate-config &> /dev/null
 for file in "${nixos_dir}/*"; do
     sudo cp -fr $file /etc/nixos
 done

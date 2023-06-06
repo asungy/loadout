@@ -3,8 +3,10 @@
 My SWE loadout.
 
 ## To-Do
-- Add Docker
-- Try to split configuration.nix into separate files
+- Tidy up scripts
+  - Add done message
+  - Create function to silence output
+- Split other nix configurations into separate files
 - Configure Firefox browser
 - Add NerdFont
 - Figure out what Flakes are

@@ -8,6 +8,7 @@
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
+      ./docker.nix
     ];
 
   # Bootloader.
@@ -85,7 +86,7 @@
   users.users.alek = {
     isNormalUser = true;
     description = "alek";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "wheel"];
     packages = with pkgs; [
       brave
       delta
