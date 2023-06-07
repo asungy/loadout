@@ -1,14 +1,8 @@
-# Environment configuration.
+# Environment variables.
 
 { config, pkgs, ... } :
 
 {
-  # List packages installed in system profile.
-  environment.systemPackages = with pkgs; [
-    neovim
-    python312
-  ];
-
   # Set environment variables.
   environment.variables = {
     # Set IBUS environment variables.

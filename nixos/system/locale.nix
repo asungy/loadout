@@ -1,8 +1,4 @@
 # Locale configuration.
-#
-# Notes:
-# - To use dvorak-programmer keyboard (via IBus), need to manually add in
-#   preferences.
 
 { config, pkgs, ... } :
 
@@ -25,8 +21,16 @@
   };
 
   # Set up input methods (keyboards).
+  #
+  # For Dvorak, need to manually set in IBus preferences.
   i18n.inputMethod = {
     enabled = "ibus";
     ibus.engines = with pkgs.ibus-engines; [ libpinyin ];
+  };
+
+  # Set keyboard layout.
+  services.xserver = {
+    layout = "us";
+    xkbVariant = "eng,";
   };
 }
