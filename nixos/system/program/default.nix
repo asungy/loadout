@@ -1,10 +1,9 @@
-# Entrypoint file.
+# System-wide programs.
 
 { config, pkgs, ... } :
 
 {
   imports = [
-    ./user
-    ./system
+    ./docker.nix
   ];
 }

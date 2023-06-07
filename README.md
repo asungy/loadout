@@ -4,6 +4,7 @@ My SWE loadout.
 
 ## To-Do
 - Split other nix configurations into separate files
+- Set up dvorak keyboard
 - Configure Git
   - https://nixos.wiki/wiki/Git
 - Configure Firefox browser
@@ -11,3 +12,4 @@ My SWE loadout.
 - Figure out what Flakes are
   - https://nixos.wiki/wiki/Flakes
   - https://www.tweag.io/blog/2020-05-25-flakes/
+- Try configuring Wayland for windowing
