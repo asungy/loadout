@@ -1,4 +1,8 @@
 # Locale configuration.
+#
+# Notes:
+# - To use dvorak-programmer keyboard (via IBus), need to manually add in
+#   preferences.
 
 { config, pkgs, ... } :
 

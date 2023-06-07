@@ -3,8 +3,6 @@
 My SWE loadout.
 
 ## To-Do
-- Split other nix configurations into separate files
-- Set up dvorak keyboard
 - Configure Git
   - https://nixos.wiki/wiki/Git
 - Configure Firefox browser
