@@ -4,8 +4,6 @@
 
 # Error if a variable is referenced before being set.
 set -u
-# Exit if a command errors.
-set -e
 
 # Color settings
 Bold='\033[1m'
