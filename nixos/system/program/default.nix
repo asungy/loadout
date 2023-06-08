@@ -12,4 +12,8 @@
     neovim
     python312
   ];
+
+  environment.plasma5.excludePackages = with pkgs.libsForQt5; [
+    spectacle
+  ];
 }

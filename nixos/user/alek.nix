@@ -19,6 +19,7 @@ in
       delta
       dropbox
       firefox
+      flameshot
       git
       keepassxc
       nodejs_20
