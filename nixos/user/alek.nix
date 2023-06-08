@@ -8,9 +8,13 @@ in
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.alek = {
     isNormalUser = true;
-    description = username;
     extraGroups = ["networkmanager" "wheel"];
-    packages = with pkgs; [
+  };
+
+  home-manager.users.alek = { pkgs, ... } :
+  {
+    nixpkgs.config.allowUnfree = true;
+    home.packages = with pkgs; [
       brave
       delta
       dropbox
@@ -22,6 +26,7 @@ in
       tmux
       xclip
     ];
+    home.stateVersion = "23.05";
   };
 
   # Don't prompt for sudo password.

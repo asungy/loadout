@@ -5,6 +5,7 @@ My SWE loadout.
 ## To-Do
 - Set up Home Manager
   - https://nixos.wiki/wiki/Home_Manager
+  - https://nix-community.github.io/home-manager/index.html#id-1.2
 - Configure Firefox browser
 - Configure Git
   - https://nixos.wiki/wiki/Git
