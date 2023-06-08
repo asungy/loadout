@@ -17,6 +17,7 @@ in
       firefox
       git
       keepassxc
+      nodejs_20
       ripgrep
       tmux
       xclip
