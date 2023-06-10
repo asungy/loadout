@@ -29,7 +29,14 @@ in
       tmux
       xclip
     ];
+    programs.bash.enable = true;
     home.stateVersion = "23.05";
+  };
+
+  # Shell aliases.
+  programs.bash.shellAliases = {
+    ls = "ls --color=tty";
+    vim = "nvim";
   };
 
   # Don't prompt for sudo password.
