@@ -3,18 +3,23 @@
 { config, pkgs, ... }:
 let
   username = "alek";
+  home-manager = builtins.fetchTarball "https://github.com/nix-community/home-manager/archive/release-23.05.tar.gz";
 in
 {
-  # Define a user account. Don't forget to set a password with ‘passwd’.
+  # Import Home Manager.
+  imports = [ (import "${home-manager}/nixos") ];
+
+  # Define a user account.
   users.users.alek = {
     isNormalUser = true;
     extraGroups = ["networkmanager" "wheel"];
-    home = "/home/${username}";
-    createHome = false;
   };
 
   home-manager.users.alek = { pkgs, ... } :
   {
+    home.username = "${username}";
+    home.homeDirectory = "/home/${username}";
+
     nixpkgs.config.allowUnfree = true;
     home.packages = with pkgs; [
       brave
@@ -29,15 +34,19 @@ in
       tmux
       xclip
     ];
+
+    programs.home-manager.enable = true;
     programs.bash.enable = true;
+
+    # Shell aliases.
+    programs.bash.shellAliases = {
+      ls = "ls --color=tty";
+      vim = "nvim";
+    };
+
     home.stateVersion = "23.05";
   };
 
-  # Shell aliases.
-  programs.bash.shellAliases = {
-    ls = "ls --color=tty";
-    vim = "nvim";
-  };
 
   # Don't prompt for sudo password.
   #
