@@ -9,6 +9,8 @@ in
   users.users.alek = {
     isNormalUser = true;
     extraGroups = ["networkmanager" "wheel"];
+    home = "/home/${username}";
+    createHome = false;
   };
 
   home-manager.users.alek = { pkgs, ... } :
