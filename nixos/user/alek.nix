@@ -1,18 +1,26 @@
 # User configuration for "alek".
 
-{ config, pkgs, ... }:
+{ config, pkgs, lib, options, ... }:
 let
   username = "alek";
   home-manager = builtins.fetchTarball "https://github.com/nix-community/home-manager/archive/release-23.05.tar.gz";
 in
 {
   # Import Home Manager.
-  imports = [ (import "${home-manager}/nixos") ];
+  imports = [
+    (import "${home-manager}/nixos")
+
+  ];
 
   # Define a user account.
   users.users.alek = {
     isNormalUser = true;
     extraGroups = ["networkmanager" "wheel"];
+    # TODO: Figure out how to conditional set password if in VM.
+    # ({lib, options, ...}: lib.mkIf (options ? virtualisation.memorySize) {
+    #   users.users.alek.hashedPassword = "";
+    # })
+    password = "";
   };
 
   home-manager.users.alek = { pkgs, ... } :
@@ -44,6 +52,13 @@ in
       vim = "nvim";
     };
 
+    # Manage Git.
+    programs.git = {
+      enable = true;
+      userName = "asungy";
+      userEmail = "62207329+asungy@users.noreply.github.com";
+    };
+
     home.stateVersion = "23.05";
   };
 
@@ -62,4 +77,6 @@ in
       ];
     }
   ];
+
+  
 }

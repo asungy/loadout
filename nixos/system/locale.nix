@@ -21,8 +21,6 @@
   };
 
   # Set up input methods (keyboards).
-  #
-  # For Dvorak, need to manually set in IBus preferences.
   i18n.inputMethod = {
     enabled = "ibus";
     ibus.engines = with pkgs.ibus-engines; [ libpinyin ];
