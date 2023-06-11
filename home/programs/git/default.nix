@@ -11,10 +11,6 @@ let
   };
 in
 {
-  home.packages = with pkgs.gitAndTools; [
-    diff-so-fancy
-  ];
-
   programs.git = {
     enable = true;
     extraConfig = gitConfig;
