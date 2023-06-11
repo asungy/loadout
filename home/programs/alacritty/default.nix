@@ -9,6 +9,7 @@ in
     enable = true;
     settings = {
       font = fontConfig;
+      shell.program = "${pkgs.tmux}/bin/tmux";
     };
   };
 }
