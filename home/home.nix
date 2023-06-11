@@ -5,7 +5,9 @@ let
 
   defaultPkgs = with pkgs; [
     delta
+    dropbox
     git
+    keepassxc
     ripgrep
     tmux
     tree
