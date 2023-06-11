@@ -8,6 +8,7 @@ let
     delta
     dropbox
     git
+    htop
     keepassxc
     ripgrep
     tmux
