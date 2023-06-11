@@ -14,5 +14,6 @@ in
   ./alacritty
   ./bash
   ./git
+  ./tmux
   more
 ]
