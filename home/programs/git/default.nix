@@ -14,6 +14,14 @@ in
     extraConfig = gitConfig;
     userEmail = "62207329+asungy@users.noreply.github.com";
     userName = "asungy";
-    diff-so-fancy.enable = true;
+    delta = {
+      enable = true;
+      options = {
+        line-numbers = true;
+        navigate = true;
+        side-by-side = true;
+        syntax-theme = "Dracula";
+      };
+    };
   };
 }
