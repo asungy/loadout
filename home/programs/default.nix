@@ -11,6 +11,7 @@ let
   };
 in
 [
+  ./alacritty
   ./bash
   ./git
   more
