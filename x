@@ -11,6 +11,7 @@ activateHM() {
 
 rebuild_home() {
     nix build .#homeConfigurations.asungy.activationPackage
+    activateHM
 }
 
 rebuild_system() {
@@ -34,7 +35,7 @@ main() {
             rebuild_system;;
         "vm")
             rebuild_vm;;
-	"fresh")
+        "fresh")
             fresh_install;;
         *)
             echo 'Expected "home", "system", "vm", "fresh".';;
