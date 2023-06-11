@@ -4,10 +4,8 @@ let
   gitConfig = {
     core = {
       editor = "nvim";
-      pager = "delta --diff-so-fancy";
     };
     init.defaultBranch = "main";
-    delta.enable = true;
   };
 in
 {
@@ -16,5 +14,6 @@ in
     extraConfig = gitConfig;
     userEmail = "62207329+asungy@users.noreply.github.com";
     userName = "asungy";
+    diff-so-fancy.enable = true;
   };
 }

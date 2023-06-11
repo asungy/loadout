@@ -5,7 +5,6 @@ let
 
   defaultPkgs = with pkgs; [
     brave
-    delta
     dropbox
     git
     htop
