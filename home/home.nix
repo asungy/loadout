@@ -5,6 +5,7 @@ let
 
   defaultPkgs = with pkgs; [
     delta
+    git
     ripgrep
     tmux
     tree
@@ -12,8 +13,6 @@ let
   ];
 
   buildDeps = with pkgs; [
-    git       # Required for Neovim.
-    nodejs_20 # Required for Neovim.
     python312 # Required for Dropbox.
   ];
 in
