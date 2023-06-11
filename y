@@ -1,9 +1,10 @@
-#!/usr/bin/env bash
+#!/usr/bin/env nix-shell
+#! nix-shell -i bash
+#! nix-shell -p bash git llvmPackages_16.libcxxClang neovim nodejs_20 yarn
 
-# This script copies the contents of the `nvim/` directory to `$HOME/.config/nvim`.
+# Neovim helper build script.
 
-# Error if a variable is referenced before being set.
-set -u
+set -e
 
 # Color settings
 Bold='\033[1m'
@@ -28,9 +29,8 @@ info() {
 ensure() {
     if ! "$@"; then err "command failed: $*"; fi
 }
-
-main() {
-    local root=`dirname $(dirname $(realpath "$0"))`
+copy() {
+    local root=`dirname $(realpath "$0")`
     local nvim_dir="${root}/nvim"
 
     ensure rm -fr "${HOME}/.config/nvim"
@@ -39,6 +39,24 @@ main() {
     info "Copied Neovim files."
 
     echo "Done."
+}
+
+rebuild() {
+    ensure rm -fr "${HOME}/.local/share/nvim" "${HOME}/.local/state/nvim"
+    info "Cleared Neovim cache."
+
+    nvim
+}
+
+main() {
+    case $1 in
+        "copy")
+            copy;;
+        "rebuild")
+            rebuild;;
+        *)
+            echo 'Expected "copy", "rebuild".'
+    esac
 }
 
 main "$@" || exit 1

@@ -1,6 +1,6 @@
 # Loadout
 
-My SWE loadout.
+NixOS and Neovim configurations.
 
 ## To-Do
 - Configure Firefox browser
