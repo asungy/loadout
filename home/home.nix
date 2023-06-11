@@ -35,10 +35,4 @@ in
 
     stateVersion = "23.05";
   };
-
-  # Shell aliases.
-  programs.bash.shellAliases = {
-    ls = "ls --color=tty";
-    vim = "nvim";
-  };
 }
