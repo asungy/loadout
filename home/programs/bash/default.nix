@@ -2,7 +2,6 @@
 { pkgs, ... } :
 let
   aliases = {
-    cat = "bat";
     ls = "ls --color=tty";
     vim = "nvim";
   };
