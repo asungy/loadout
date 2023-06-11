@@ -5,6 +5,10 @@
 # Shows the output of every command
 set +x
 
+rebuild_home() {
+    nix build .#homeConfigurations.asungy.activationPackage
+}
+
 rebuild_system() {
     sudo nixos-rebuild switch --flake .#dell-g5
 }
@@ -15,6 +19,8 @@ rebuild_vm() {
 
 main() {
     case $1 in
+        "home")
+            rebuild_home;;
         "system")
             rebuild_system;;
         "vm")

@@ -76,16 +76,17 @@
   ];
 
   # User.
-  users.users.alek = {
+  users.users.asungy = {
     isNormalUser = true;
     extraGroups = ["docker" "networkmanager" "wheel"];
     shell = pkgs.bash;
+    password = "";
   };
 
   # Don't prompt for sudo password.
   security.sudo.extraRules = [
     {
-      users = ["alek"];
+      users = ["asungy"];
       commands = [
         {
           command = "ALL";
@@ -123,7 +124,7 @@
       auto-optimise-store = true;
 
       # Grants additional rights to users connecting to Nix daemon.
-      trusted-users = ["root" "alek"];
+      trusted-users = ["root" "asungy"];
 
       # Allow experimental features.
       experimental-features = [ "nix-command" "flakes" ];

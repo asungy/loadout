@@ -15,6 +15,9 @@
       system = "x86_64-linux";
     in
   {
+    homeConfigurations =
+      import ./outputs/home-conf.nix { inherit inputs system; };
+
     nixosConfigurations =
       import ./outputs/nixos-conf.nix { inherit inputs system; };
   };
