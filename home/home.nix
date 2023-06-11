@@ -4,15 +4,17 @@ let
   homeDirectory = "/home/${username}";
 
   defaultPkgs = with pkgs; [
-    brave
-    dropbox
-    git
-    htop
-    keepassxc
-    ripgrep
-    tmux
-    tree
-    xclip
+    bat             # A better `cat`
+    brave           # Browser
+    cloc            # Line counter
+    dropbox         # Cloud filesystem
+    git             # Version control
+    htop            # Resource viewer
+    keepassxc       # Password manager
+    ripgrep         # A better `grep`
+    tmux            # Terminal multiplexer
+    tree            # File tree viewer
+    xclip           # Clipboard/Terminal conduit
   ];
 
   buildDeps = with pkgs; [
