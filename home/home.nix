@@ -4,6 +4,7 @@ let
   homeDirectory = "/home/${username}";
 
   defaultPkgs = with pkgs; [
+    brave
     delta
     dropbox
     git
