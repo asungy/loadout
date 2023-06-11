@@ -5,6 +5,10 @@
 # Shows the output of every command
 set +x
 
+activateHM() {
+    result/activate
+}
+
 rebuild_home() {
     nix build .#homeConfigurations.asungy.activationPackage
 }
@@ -17,6 +21,11 @@ rebuild_vm() {
     sudo nixos-rebuild build-vm --flake .#dell-g5
 }
 
+fresh_install() {
+    rebuild_system
+    rebuild_home
+}
+
 main() {
     case $1 in
         "home")
@@ -25,8 +34,10 @@ main() {
             rebuild_system;;
         "vm")
             rebuild_vm;;
+	"fresh")
+            fresh_install;;
         *)
-            echo 'Expected "system", "vm".';;
+            echo 'Expected "home", "system", "vm", "fresh".';;
     esac
 }
 
