@@ -1,7 +1,7 @@
 -- Extension for Mason to easily integrate lspconfig
 return {
     "williamboman/mason-lspconfig.nvim",
-    lazy = false,
+    lazy = true,
     dependencies = {"neovim/nvim-lspconfig"},
     config = function()
         local mason_lspconfig = require("mason-lspconfig")
