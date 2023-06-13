@@ -3,7 +3,6 @@ local opts = {
     noremap = true, -- no recursive mapping
     silent  = true  -- do not echo mapping in command line
 }
-local nvim_dir = os.getenv("HOME") .. "/.config/nvim"
 local command
 
 -- Helpful for key-menu plugin
@@ -83,10 +82,6 @@ keymap("n", "<C-LeftMouse>", "<Nop>", opts)
 keymap("", "<Space>", "<Nop>", opts)
 vim.g.mapleader = " "
 
--- Open neovim configuration repo
-command = "<CMD>edit " .. nvim_dir .. "<CR>"
-keymap("n", "<leader>cf", command, opts)
-
 -- Vertical window split
 keymap("n", "<leader>vs", "<CMD>vsplit<CR>", opts)
 
@@ -150,3 +145,6 @@ keymap("n", "g#", [[g#<Cmd>lua require('hlslens').start()<CR>]], opts)
 -- keymap("n", "<leader>rr", "<CMD>IronRestart<CR>", opts)
 -- keymap("n", "<leader>rf", "<CMD>IronFocus<CR>", opts)
 -- keymap("n", "<leader>rh", "<CMD>IronHide<CR>", opts)
+
+-- no-neck-pain
+keymap("n", "<leader>cn", "<CMD>NoNeckPain<CR>", opts)
