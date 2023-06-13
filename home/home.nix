@@ -17,8 +17,10 @@ let
     xclip           # Clipboard/Terminal conduit
   ];
 
-  buildDeps = with pkgs; [
-    python312 # Required for Dropbox.
+  dev = with pkgs; [
+    cargo
+    python312
+    rustc
   ];
 in
 {
@@ -32,7 +34,7 @@ in
     inherit username;
     inherit homeDirectory;
 
-    packages = defaultPkgs ++ buildDeps;
+    packages = defaultPkgs ++ dev;
 
     stateVersion = "23.05";
   };
