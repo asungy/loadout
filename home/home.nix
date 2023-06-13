@@ -20,6 +20,7 @@ let
   dev = with pkgs; [
     cargo
     deno
+    nodejs_20
     python312
     rustc
   ];
