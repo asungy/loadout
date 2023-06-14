@@ -4,22 +4,23 @@ let
   homeDirectory = "/home/${username}";
 
   defaultPkgs = with pkgs; [
-    bat             # A better `cat`
-    brave           # Browser
-    cloc            # Line counter
-    dropbox         # Cloud filesystem
-    git             # Version control
-    htop            # Resource viewer
-    keepassxc       # Password manager
-    ripgrep         # A better `grep`
-    tmux            # Terminal multiplexer
-    tree            # File tree viewer
-    xclip           # Clipboard/Terminal conduit
+    bat                  # A better `cat`
+    brave                # Browser
+    cloc                 # Line counter
+    dropbox              # Cloud filesystem
+    git                  # Version control
+    htop                 # Resource viewer
+    keepassxc            # Password manager
+    ripgrep              # A better `grep`
+    tmux                 # Terminal multiplexer
+    tree                 # File tree viewer
+    xclip                # Clipboard/Terminal conduit
   ];
 
   dev = with pkgs; [
-    deno
+    llvmPackages_16.libcxxClang
     nodejs_20
+    protobuf
     python312
     rustup
   ];

@@ -6,9 +6,10 @@ in
 {
   programs.tmux = {
     enable = true;
-    extraConfig = tmuxConfig;
     escapeTime = 0;
+    extraConfig = tmuxConfig;
     keyMode = "vi";
+    package = pkgs.tmux-mem-cpu-load;
     shortcut = "a";
   };
 }
