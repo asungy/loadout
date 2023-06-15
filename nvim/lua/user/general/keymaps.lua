@@ -147,4 +147,4 @@ keymap("n", "g#", [[g#<Cmd>lua require('hlslens').start()<CR>]], opts)
 -- keymap("n", "<leader>rh", "<CMD>IronHide<CR>", opts)
 
 -- no-neck-pain
-keymap("n", "<leader>cn", "<CMD>NoNeckPain<CR>", opts)
+-- keymap("n", "<leader>cn", "<CMD>NoNeckPain<CR>", opts)
