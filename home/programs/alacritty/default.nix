@@ -46,6 +46,7 @@ in
       colors = colorTheme;
       font = fontConfig;
       shell.program = "${pkgs.tmux}/bin/tmux";
+      window.opacity = 0.85;
     };
   };
 }
