@@ -18,6 +18,7 @@ let
   ];
 
   dev = with pkgs; [
+    llvmPackages_16.clang-unwrapped
     deno
     nodejs_20
     python312
