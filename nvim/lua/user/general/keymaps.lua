@@ -146,5 +146,5 @@ keymap("n", "g#", [[g#<Cmd>lua require('hlslens').start()<CR>]], opts)
 -- keymap("n", "<leader>rf", "<CMD>IronFocus<CR>", opts)
 -- keymap("n", "<leader>rh", "<CMD>IronHide<CR>", opts)
 
--- no-neck-pain
--- keymap("n", "<leader>cn", "<CMD>NoNeckPain<CR>", opts)
+-- zen-mode
+keymap("n", "<leader>zn", "<CMD>ZenMode<CR>", opts)
