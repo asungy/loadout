@@ -9,6 +9,7 @@
 
   # Networking.
   networking.networkmanager.enable = true;
+  networking.firewall.enable = false;
 
   # Desktop environment.
   services.xserver = {
@@ -142,10 +143,14 @@
         dates = "weekly";
       };
 
-      rootless = {
-        enable = true;
-        setSocketVariable = true;
-      };
+      # NOTE: This was causing networking issues with Docker, particularly when
+      # trying to connect to a server hosted in a container through the host
+      # machine.
+      #
+      # rootless = {
+      #   enable = true;
+      #   setSocketVariable = true;
+      # };
     };
   };
 
