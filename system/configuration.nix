@@ -1,5 +1,6 @@
 { pkgs, inputs, ... } :
-{
+  let udevRules = pkgs.callPackage ./udev/default.nix { inherit pkgs; };
+in {
   imports = [];
 
   # System packages.
@@ -58,6 +59,9 @@
     xkbVariant = "eng,";
   };
 
+  # Install custom udev configurations.
+  services.udev.packages = [ udevRules ];
+
   # Enable sound with pipewire.
   sound.enable = true;
   hardware.pulseaudio.enable = false;
@@ -75,6 +79,9 @@
       fonts = [ "FiraCode" ];
     })
   ];
+
+  # Add user to plugdev.
+  users.groups.plugdev.members = [ "asungy" ];
 
   # User.
   users.users.asungy = {
