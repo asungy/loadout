@@ -7,8 +7,7 @@ let
     ls = "ls --color=tty";
     vim = "nvim";
   };
-  cmdsForInteractiveShell = ''
-  '';
+  cmdsForInteractiveShell = builtins.readFile ./rc.sh;
 in
 {
   programs.bash = {
