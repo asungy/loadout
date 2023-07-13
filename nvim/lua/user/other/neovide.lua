@@ -9,7 +9,7 @@ if vim.g.neovide == true then
     -- Refresh rate when not focused
     vim.g.neovide_refresh_rate_idle = 5
     -- Transparency
-    vim.g.neovide_transparency = 0.95
+    vim.g.neovide_transparency = 0.60
     -- Scroll animation length
     vim.g.neovide_scroll_animation_length = 0.30
     -- Fullscreen
