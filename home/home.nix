@@ -19,6 +19,8 @@ let
 
   dev = with pkgs; [
     llvmPackages_16.clang-unwrapped
+    nodePackages_latest.typescript
+    nodePackages_latest.typescript-language-server
     nodejs_20
     python312
     rustup
