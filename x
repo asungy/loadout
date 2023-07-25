@@ -40,18 +40,24 @@ fresh_install() {
     ensure rebuild_home
 }
 
+test_system() {
+    sudo nixos-rebuild test --flake .#dell-g5
+}
+
 main() {
     case $1 in
         "home")
             rebuild_home;;
         "system")
             rebuild_system;;
+        "test")
+            test_system;;
         "vm")
             rebuild_vm;;
         "fresh")
             fresh_install;;
         *)
-            echo 'Expected "home", "system", "vm", "fresh".';;
+            echo 'Expected "home", "system", "vm", "fresh", "test".';;
     esac
 }
 

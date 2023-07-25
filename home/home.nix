@@ -24,6 +24,8 @@ let
     nodejs_20
     python312
     rustup
+    typst
+    typst-lsp
   ];
 in
 {

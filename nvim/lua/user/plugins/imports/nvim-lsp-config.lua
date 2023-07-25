@@ -7,5 +7,7 @@ return {
         lspconfig.rust_analyzer.setup {}
         lspconfig.clangd.setup {}
         lspconfig.tsserver.setup {}
+        -- typst LSP doesn't seem to really work.
+        lspconfig.typst_lsp.setup {}
     end,
 }
