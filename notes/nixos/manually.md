@@ -1,6 +1,6 @@
 # Manually
- 
- Actions that currently require a manual set up for a desired experience.
+
+Actions that currently require a manual set up for a desired experience.
 
 ## Setup Neovim
 - Run the `y` script to set up Neovim:
