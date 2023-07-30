@@ -3,7 +3,14 @@
 let
   aliases = {
     archbox = "docker run --network=host -it --rm --name=archbox archlinux:latest /bin/bash";
-    archbox-mnt = "docker run --network=host -it --rm --name=archbox-mnt --workdir=/mnt/\"\$\{PWD##*/}\" --volume=\"\$(pwd)\":/mnt/\"\$\{PWD##*/}\" archlinux:latest /bin/bash";
+    archbox-mnt = (
+      "docker run --network=host -it --rm " +
+      "--name=archbox-mnt " +
+      "--workdir=/mnt/\"\$\{PWD##*/}\" " +
+      "--volume=\"\$(pwd)\":/mnt/\"\$\{PWD##*/}\" " +
+      "archlinux:latest /bin/bash"
+    );
+    cpwd = "pwd | xclip -selection clipboard";
     ls = "ls --color=tty";
     vim = "nvim";
   };
