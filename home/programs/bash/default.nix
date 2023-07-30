@@ -10,6 +10,7 @@ let
       "--volume=\"\$(pwd)\":/mnt/\"\$\{PWD##*/}\" " +
       "archlinux:latest /bin/bash"
     );
+    cpwd = "pwd | xclip -selection clipboard";
     ls = "ls --color=tty";
     vim = "nvim";
   };
