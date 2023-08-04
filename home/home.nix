@@ -25,6 +25,7 @@ let
   ];
 
   dev = with pkgs; [
+    nodePackages_latest.http-server
     nodePackages_latest.typescript
     nodePackages_latest.typescript-language-server
     rustup
