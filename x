@@ -23,7 +23,6 @@ activateHM() {
 }
 
 rebuild_home() {
-    sudo -i nix-channel --update
     nix build .#homeConfigurations.asungy.activationPackage
     activateHM
 }
