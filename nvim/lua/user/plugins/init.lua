@@ -20,6 +20,14 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.runtimepath:prepend(lazypath)
 
+-- If opening from inside neovim terminal then do not load all the other plugins
+if os.getenv("NVIM") ~= nil then
+    require('lazy').setup {
+        {'willothy/flatten.nvim', config = true },
+    }
+    return
+end
+
 local ok, lazy = pcall(require, "lazy")
 if not ok then
     print("Cannot find lazy. Try restarting.")
