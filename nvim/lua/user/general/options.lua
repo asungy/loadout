@@ -56,6 +56,7 @@ local options = {
     ignorecase = false,         -- ignore case in search patterns
     icon = true,                -- sets text to window title
     iconstring = "",            -- used for icon text of window
+    keymap = "dvorak",          -- set keyboard mapping for insert and search modes.
     laststatus = 2,             -- value option to select when last window will have status line
                                 -- (2: always)
     list = true,                -- set list mode. useful for seeing trailing whitespaces
