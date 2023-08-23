@@ -12,6 +12,7 @@ let
     );
     cpwd = "pwd | xclip -selection clipboard";
     ls = "ls --color=tty";
+    li = "ls --color=tty"; # easier typing for dvorak
     vim = "nvim";
   };
   cmdsForInteractiveShell = builtins.readFile ./rc.sh;
