@@ -1,5 +1,7 @@
 { pkgs, inputs, ... } :
-  let udevRules = pkgs.callPackage ./udev/default.nix { inherit pkgs; };
+  let
+    udevRules = pkgs.callPackage ./udev/default.nix { inherit pkgs; };
+    username = "asungy";
 in {
   imports = [];
 
@@ -81,10 +83,10 @@ in {
   ];
 
   # Add user to plugdev.
-  users.groups.plugdev.members = [ "asungy" ];
+  users.groups.plugdev.members = [ username ];
 
   # User.
-  users.users.asungy = {
+  users.users.${username} = {
     isNormalUser = true;
     extraGroups = ["docker" "networkmanager" "wheel"];
     shell = pkgs.bash;
@@ -94,7 +96,7 @@ in {
   # Don't prompt for sudo password.
   security.sudo.extraRules = [
     {
-      users = ["asungy"];
+      users = [username];
       commands = [
         {
           command = "ALL";
@@ -133,7 +135,7 @@ in {
       auto-optimise-store = true;
 
       # Grants additional rights to users connecting to Nix daemon.
-      trusted-users = ["root" "asungy"];
+      trusted-users = ["root" username];
 
       # Allow experimental features.
       experimental-features = [ "nix-command" "flakes" ];
