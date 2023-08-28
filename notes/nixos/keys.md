@@ -36,12 +36,11 @@ To print the public key given a key ID, run the following:
 gpg --armor --export <key ID>
 ```
 
-#### Edit the `keyid` file
+#### Modify `home/programs/git/default.nix`
 
 Git needs to be configured by Home Manager to use the newly generated GPG key.
-Create a file called `<loadout-root>/home/programs/git/keyid` and paste in the
-key ID that will be used to sign commits.
-
+Modify the `home/programs/git/default.nix` file and update the key in the
+`signingConfig` object.
 
 Don't forget to run `x home`.
 

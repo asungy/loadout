@@ -19,7 +19,7 @@ let
   };
 
   signingConfig = {
-    key = builtins.readFile ./keyid;
+    key = "34A1D1CB667F1C7D062670BED91AAFA37A816998";
     signByDefault = true;
   };
 in
@@ -28,6 +28,7 @@ in
     delta = deltaConfig;
     enable = true;
     extraConfig = gitConfig;
+    signing = signingConfig;
     userEmail = "62207329+asungy@users.noreply.github.com";
     userName = "asungy";
   };

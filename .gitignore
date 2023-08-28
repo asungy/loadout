@@ -1,5 +1,2 @@
 # Symlink that gets created after call to nixos-rebuild.
 result
-
-# Git signing key.
-home/programs/git/keyid
