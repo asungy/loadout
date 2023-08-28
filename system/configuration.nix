@@ -8,6 +8,7 @@ in {
   # System packages.
   environment.systemPackages = with pkgs; [
     neovim
+    pinentry-curses
   ];
 
   # Networking.
@@ -84,6 +85,14 @@ in {
 
   # Add user to plugdev.
   users.groups.plugdev.members = [ username ];
+
+  # GPG setup.
+  services.pcscd.enable = true;
+  programs.gnupg.agent = {
+    enable = true;
+    pinentryFlavor = "curses";
+    enableSSHSupport = true;
+  };
 
   # User.
   users.users.${username} = {
