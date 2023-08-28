@@ -17,6 +17,11 @@ let
       syntax-theme = "Dracula";
     };
   };
+
+  signingConfig = {
+    key = builtins.readFile ./keyid;
+    signByDefault = true;
+  };
 in
 {
   programs.git = {
