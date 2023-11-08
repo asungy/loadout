@@ -57,7 +57,12 @@ vim.cmd[[
     autocmd FileType nix setlocal tabstop=2 shiftwidth=2 expandtab
 ]]
 
--- Set tab spacing for nix files.
+-- Set tab spacing for json files.
 vim.cmd[[
-    autocmd FileType json setlocal tabstop=2 shiftwidth=2 expandtab
+    autocmd FileType json,jsonc setlocal tabstop=2 shiftwidth=2 expandtab
+]]
+
+-- WASM
+vim.cmd[[
+    autocmd FileType wat setlocal tabstop=2 shiftwidth=2 expandtab
 ]]
