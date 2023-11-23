@@ -4,8 +4,9 @@ return {
     lazy = false,
     config = function()
         local lspconfig = require("lspconfig")
-        lspconfig.rust_analyzer.setup {}
         lspconfig.clangd.setup {}
+        lspconfig.denols.setup{}
+        lspconfig.rust_analyzer.setup {}
         lspconfig.tsserver.setup {}
         lspconfig.zls.setup{}
         -- typst LSP doesn't seem to really work.
