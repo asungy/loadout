@@ -23,20 +23,6 @@ let
     nodejs_20
     python312
   ];
-
-  dev = with pkgs; [
-    nodePackages_latest.http-server
-    nodePackages_latest.typescript
-    nodePackages_latest.typescript-language-server
-    rustup
-    typst
-    typst-lsp
-  ];
-
-  other = with pkgs; [
-    obs-studio
-  ];
-
 in
 {
   programs.home-manager.enable = true;
@@ -49,7 +35,7 @@ in
     inherit username;
     inherit homeDirectory;
 
-    packages = defaultPkgs ++ required ++ dev ++ other;
+    packages = defaultPkgs ++ required;
 
     stateVersion = "23.05";
   };
