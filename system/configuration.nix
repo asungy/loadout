@@ -15,12 +15,8 @@ in {
   networking.networkmanager.enable = true;
   networking.firewall.enable = false;
 
-  # Desktop environment.
-  services.xserver = {
-    enable = true;
-    displayManager.sddm.enable = true;
-    desktopManager.plasma5.enable = true;
-  };
+  # Wayland compositor
+  programs.hyprland.enable = true;
 
   # Environment variables.
   environment.variables = {
@@ -54,12 +50,6 @@ in {
   i18n.inputMethod = {
     enabled = "ibus";
     ibus.engines = with pkgs.ibus-engines; [ libpinyin ];
-  };
-
-  # Set keyboard layout.
-  services.xserver = {
-    layout = "us";
-    xkbVariant = "eng,";
   };
 
   # Install custom udev configurations.

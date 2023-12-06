@@ -15,6 +15,7 @@ let
     tmux            # Terminal multiplexer
     tree            # File tree viewer
     xclip           # Clipboard/Terminal conduit
+    kitty
   ];
 
   required = with pkgs; [
@@ -22,6 +23,10 @@ let
     llvmPackages_16.clang-unwrapped
     nodejs_20
     python312
+  ];
+
+  dev = with pkgs; [
+    cmake-language-server
   ];
 in
 {
@@ -35,7 +40,7 @@ in
     inherit username;
     inherit homeDirectory;
 
-    packages = defaultPkgs ++ required;
+    packages = defaultPkgs ++ required ++ dev;
 
     stateVersion = "23.05";
   };
