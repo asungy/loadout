@@ -1,0 +1,34 @@
+#!/usr/bin/env bash
+
+# Config helper.
+
+# Shows the output of every command
+set +x
+
+# Log an error.
+err() {
+    printf "${BRed}Error${NC}: $1\n" >&2
+    exit 1
+}
+
+# Run a command that should never fail. If the command fails execution
+# will immediately terminate with an error showing the failing
+# command.
+ensure() {
+    if ! "$@"; then err "command failed: $*"; fi
+}
+
+copy_hyprland_config() {
+    cp ./hypr/hyprland.conf ~/.config/hypr/hyprland.conf
+}
+
+main() {
+    case $1 in
+        "hypr")
+            copy_hyprland_config;;
+        *)
+            echo 'Expected "hypr".';;
+    esac
+}
+
+main "$@" || exit 1
