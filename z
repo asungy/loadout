@@ -2,13 +2,27 @@
 
 # Config helper.
 
+# Exit on error.
+set -e
+
 # Shows the output of every command
 set +x
+
+# Color settings
+Bold='\033[1m'
+BRed='\033[1;31m'
+BGreen='\033[1;32m'
+NC='\033[0m' # No Color
 
 # Log an error.
 err() {
     printf "${BRed}Error${NC}: $1\n" >&2
     exit 1
+}
+
+# Log info.
+info() {
+    printf "${BGreen}Info${NC}: $1\n" >&1
 }
 
 # Run a command that should never fail. If the command fails execution
@@ -19,7 +33,8 @@ ensure() {
 }
 
 copy_hyprland_config() {
-    cp ./hypr/hyprland.conf ~/.config/hypr/hyprland.conf
+    ensure cp ./hypr/hyprland.conf ~/.config/hypr/hyprland.conf
+    info "Copied Hyprland configuration file."
 }
 
 main() {

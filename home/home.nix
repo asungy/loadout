@@ -15,7 +15,6 @@ let
     tmux            # Terminal multiplexer
     tree            # File tree viewer
     xclip           # Clipboard/Terminal conduit
-    kitty
   ];
 
   required = with pkgs; [

@@ -7,6 +7,7 @@ in {
 
   # System packages.
   environment.systemPackages = with pkgs; [
+    dunst
     neovim
     pinentry-curses
   ];
