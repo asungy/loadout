@@ -23,7 +23,7 @@ activateHM() {
 }
 
 rebuild_home() {
-    nix build .#homeConfigurations.asungy.activationPackage
+    sudo nix build .#homeConfigurations.asungy.activationPackage
     activateHM
 }
 

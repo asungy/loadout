@@ -14,7 +14,7 @@ let
     ripgrep         # A better `grep`
     tmux            # Terminal multiplexer
     tree            # File tree viewer
-    xclip           # Clipboard/Terminal conduit
+    wl-clipboard    # Clipboard/Terminal conduit
   ];
 
   required = with pkgs; [
