@@ -7,19 +7,33 @@ in {
 
   # System packages.
   environment.systemPackages = with pkgs; [
-    dunst
-    neovim
-    pinentry-curses
+    brightnessctl     # Brightness controller
+    dunst             # Notification daemon
+    hyprpaper         # Wallpaper manager
+    neovim            # Ok text editor
+    pavucontrol       # PulseAudio GUI
+    pinentry-curses   # GnuPG interface
+
   ];
 
-  # Networking.
+  # Login screen
+  services.greetd = {
+    enable = true;
+    settings = {
+      default_session = {
+        command = "Hyprland";
+      };
+    };
+  };
+
+  # Networking
   networking.networkmanager.enable = true;
   networking.firewall.enable = false;
 
   # Wayland compositor
   programs.hyprland.enable = true;
 
-  # Environment variables.
+  # Environment variables
   environment.variables = {
     # Set IBUS environment variables.
     GTK_IM_MODULE = "ibus";

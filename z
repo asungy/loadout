@@ -33,16 +33,51 @@ ensure() {
 }
 
 copy_hyprland_config() {
-    ensure cp ./hypr/hyprland.conf ~/.config/hypr/hyprland.conf
+    ensure mkdir -p ~/.config/hypr
+    ensure cp ./config/hyprland.conf ~/.config/hypr/hyprland.conf
     info "Copied Hyprland configuration file."
+}
+
+copy_waybar_config() {
+    ensure mkdir -p ~/.config/waybar
+    ensure cp ./config/waybar.conf ~/.config/waybar/config
+    info "Copied Waybar configuration."
+}
+
+copy_wallpaper() {
+    local wallpaper_filename=".wallpaper"
+    case $1 in
+        "musashi")
+            cp ./wallpapers/miyamoto-musashi.png ~/$wallpaper_filename
+            info "Copied miyamoto-musashi wallpaper."
+            ;;
+        "nixos")
+            cp ./wallpapers/nixos_honeycombs.png ~/$wallpaper_filename
+            info "Copied nixos_honeycombs wallpaper."
+            ;;
+        *)
+            echo 'Expected "musashi", "nixos".';;
+    esac
+}
+
+copy_hyprpaper() {
+    ensure mkdir -p ~/.config/hypr
+    ensure cp ./config/hyprpaper.conf ~/.config/hypr/hyprpaper.conf
+    info "Copied Hyprpaper configuration file."
 }
 
 main() {
     case $1 in
         "hypr")
             copy_hyprland_config;;
+        "waybar")
+            copy_waybar_config;;
+        "wallpaper")
+            copy_wallpaper $2;;
+        "paper")
+            copy_hyprpaper;;
         *)
-            echo 'Expected "hypr".';;
+            echo 'Expected "hypr", "waybar", "wallpaper", "paper".';;
     esac
 }
 
