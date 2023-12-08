@@ -13,18 +13,18 @@ in {
     neovim            # Ok text editor
     pavucontrol       # PulseAudio GUI
     pinentry-curses   # GnuPG interface
-
   ];
 
   # Login screen
-  services.greetd = {
-    enable = true;
-    settings = {
-      default_session = {
-        command = "Hyprland";
-      };
-    };
-  };
+  # TODO: Get this to work
+  # services.greetd = {
+  #   enable = true;
+  #   settings = {
+  #     default_session = {
+  #       command = "Hyprland";
+  #     };
+  #   };
+  # };
 
   # Networking
   networking.networkmanager.enable = true;
