@@ -15,5 +15,6 @@
   asungy = homeManagerConfiguration {
     inherit pkgs;
     modules = [{ inherit imports; }];
+    extraSpecialArgs = { nixim = inputs.nixim; };
   };
 }
