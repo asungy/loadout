@@ -29,8 +29,16 @@ in {
   # };
 
   # Networking
-  networking.networkmanager.enable = true;
-  networking.firewall.enable = false;
+  networking = {
+    networkmanager = {
+      enable = true;
+      wifi.backend = "iwd";
+    };
+
+    wireless.iwd.enable = true;
+
+    firewall.enable = true;
+  };
 
   # Wayland compositor
   programs.hyprland.enable = true;
