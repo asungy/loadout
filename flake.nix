@@ -8,8 +8,6 @@
       url = "github:nix-community/home-manager/master";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    nixim.url = "github:asungy/nixim";
   };
 
   outputs = inputs:
