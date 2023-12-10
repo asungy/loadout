@@ -17,17 +17,6 @@ in {
     xdg-desktop-portal-hyprland # Desktop portal
   ];
 
-  # Login screen
-  # TODO: Get this to work
-  # services.greetd = {
-  #   enable = true;
-  #   settings = {
-  #     default_session = {
-  #       command = "Hyprland";
-  #     };
-  #   };
-  # };
-
   # Networking
   networking = {
     networkmanager = {
