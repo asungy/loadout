@@ -14,6 +14,7 @@ let
     ls = "ls --color=tty";
     li = "ls --color=tty"; # easier typing for dvorak
     vim = "nvim";
+    nixim = "nix run github:asungy/nixim";
   };
   cmdsForInteractiveShell = builtins.readFile ./rc.sh;
 in
