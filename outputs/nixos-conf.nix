@@ -12,7 +12,6 @@
 {
   dell-g5 = nixosSystem {
     inherit pkgs system;
-    # Not exactly sure what this does...be wary.
     specialArgs = { inherit inputs; };
     modules = [
       ../system/machine/dell-g5
