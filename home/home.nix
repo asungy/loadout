@@ -1,4 +1,4 @@
-{ config, lib, pkgs, stdenv, ... } :
+{ config, lib, pkgs, stdenv, nixim, ... } :
 let
   username = "asungy";
   homeDirectory = "/home/${username}";
@@ -25,10 +25,6 @@ let
     nodejs_20
     python312
   ];
-
-  dev = with pkgs; [
-    cmake-language-server
-  ];
 in
 {
   programs.home-manager.enable = true;
@@ -41,7 +37,7 @@ in
     inherit username;
     inherit homeDirectory;
 
-    packages = defaultPkgs ++ required ++ dev;
+    packages = defaultPkgs ++ required ++ [nixim];
 
     stateVersion = "23.05";
   };
