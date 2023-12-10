@@ -1,4 +1,4 @@
-{ config, lib, pkgs, stdenv, nixim, ... } :
+{ config, lib, pkgs, stdenv, ... } :
 let
   username = "asungy";
   homeDirectory = "/home/${username}";
@@ -18,13 +18,6 @@ let
     wl-clipboard    # Clipboard/Terminal conduit
     xclip           # Clipboard/Terminal conduit
   ];
-
-  required = with pkgs; [
-    gcc13
-    llvmPackages_16.clang-unwrapped
-    nodejs_20
-    python312
-  ];
 in
 {
   programs.home-manager.enable = true;
@@ -37,7 +30,7 @@ in
     inherit username;
     inherit homeDirectory;
 
-    packages = defaultPkgs ++ required ++ [nixim];
+    packages = defaultPkgs;
 
     stateVersion = "23.05";
 
