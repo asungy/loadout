@@ -13,8 +13,7 @@ let
     cpwd = "pwd | wl-copy";
     ls = "ls --color=tty";
     li = "ls --color=tty"; # easier typing for dvorak
-    vim = "nvim";
-    nxm = "nix run github:asungy/nixim";
+    vim = "nix run github:asungy/nixim";
   };
   cmdsForInteractiveShell = builtins.readFile ./rc.sh;
 in
