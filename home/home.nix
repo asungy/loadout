@@ -44,7 +44,8 @@ in
     file = {
       ".config/hypr/hyprland.conf".source = ./config/hyprland.conf;
       ".config/hypr/hyprpaper.conf".source = ./config/hyprpaper.conf;
-      ".config/waybar/config".source = ./config/waybar.conf;
+      ".config/waybar/config".source = ./config/waybar/config;
+      ".config/waybar/style.css".source = ./config/waybar/style.css;
       ".config/wofi/config".source = ./config/wofi.conf;
     };
   };
