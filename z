@@ -66,8 +66,23 @@ copy_hyprpaper() {
     info "Copied Hyprpaper configuration file."
 }
 
+copy_wofi() {
+    ensure mkdir -p ~/.config/wofi
+    ensure cp ./config/wofi.conf ~/.config/wofi/config
+    info "Copied Wofi configuration file."
+}
+
+copy_all() {
+    copy_hyprland_config
+    copy_waybar_config
+    copy_hyprpaper
+    copy_wofi
+}
+
 main() {
     case $1 in
+        "all")
+            copy_all;;
         "hypr")
             copy_hyprland_config;;
         "waybar")
@@ -76,8 +91,10 @@ main() {
             copy_wallpaper $2;;
         "paper")
             copy_hyprpaper;;
+        "wofi")
+            copy_wofi;;
         *)
-            echo 'Expected "hypr", "waybar", "wallpaper", "paper".';;
+            echo 'Expected "all", "hypr", "waybar", "wallpaper", "paper", "wofi".';;
     esac
 }
 

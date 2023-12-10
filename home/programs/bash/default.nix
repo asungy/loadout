@@ -10,7 +10,7 @@ let
       "--volume=\"\$(pwd)\":/mnt/\"\$\{PWD##*/}\" " +
       "archlinux:latest /bin/bash"
     );
-    cpwd = "pwd | xclip -selection clipboard";
+    cpwd = "pwd | wl-copy";
     ls = "ls --color=tty";
     li = "ls --color=tty"; # easier typing for dvorak
     vim = "nvim";

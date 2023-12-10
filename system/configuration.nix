@@ -7,12 +7,13 @@ in {
 
   # System packages.
   environment.systemPackages = with pkgs; [
-    brightnessctl     # Brightness controller
-    dunst             # Notification daemon
-    hyprpaper         # Wallpaper manager
-    neovim            # Ok text editor
-    pavucontrol       # PulseAudio GUI
-    pinentry-curses   # GnuPG interface
+    brightnessctl      # Brightness controller
+    dunst              # Notification daemon
+    hyprpaper          # Wallpaper manager
+    neovim             # Ok text editor
+    pavucontrol        # PulseAudio GUI
+    pinentry-curses    # GnuPG interface
+    wofi               # Launcher/menu program
   ];
 
   # Login screen
