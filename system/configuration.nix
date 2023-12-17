@@ -15,7 +15,11 @@ in {
     pinentry-curses             # GnuPG interface
     wofi                        # Launcher/menu program
     xdg-desktop-portal-hyprland # Desktop portal
+    obs-studio                  # Screen recorder*
+    obs-studio-plugins.wlrobs   # OBS wayland plugin
   ];
+  # * Note: this needs to be installed on the system (and not through a shell)
+  # to work properly with graphics drivers on Wayland.
 
   # Networking
   networking = {
