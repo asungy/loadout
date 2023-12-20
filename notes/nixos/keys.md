@@ -8,6 +8,7 @@ follow the steps in [this guide][github_generate_new_key] (as of commit
 packages installed).
 
 > When generating a GPG key, use the following information:
+> - **type**: RSA and RSA
 > - **username**: asungy
 > - **email**: 62207329+asungy@users.noreply.github.com
 
