@@ -19,7 +19,7 @@ let
   };
 
   signingConfig = {
-    key = "34A1D1CB667F1C7D062670BED91AAFA37A816998";
+    key = "1E92C5ADF20FAFDB85F4D7659CBD0E31D59E4E72";
     signByDefault = true;
   };
 in
