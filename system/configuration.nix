@@ -10,7 +10,6 @@ in {
     brightnessctl               # Brightness controller
     dunst                       # Notification daemon
     hyprpaper                   # Wallpaper manager
-    kitty                       # Terminal
     neovim                      # Ok text editor
     obs-studio                  # Screen recorder*
     obs-studio-plugins.wlrobs   # OBS wayland plugin
