@@ -11,10 +11,9 @@ let
   };
 in
 [
-  # ./alacritty
+  ./alacritty
   ./bash
   ./git
-  ./kitty
   ./tmux
   more
 ]
