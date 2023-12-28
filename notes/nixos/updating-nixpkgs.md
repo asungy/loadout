@@ -1,9 +1,15 @@
-In order to update nix packages to pull the newest versions of packages, run the following:
+List channels:
 ```bash
-sudo nix flake update
+> sudo nix-channel --list
+nixos https://nixos.org/channels/nixos-<version>
 ```
 
-This will update the `flake.lock` file with a newer version for nixpkgs. This
-may also update other packages that are not managed by home-manager as well. If
-running a `x fresh` causes a build error, then on stage the changes to the
-nixpkgs version (via `git add -p`).
+Remove channel
+```bash
+> sudo nix-channel --remove nixos
+```
+
+Add channel
+```bash
+> sudo nix-channel --add nixos https://nixos.org/channels/nixos-unstable
+```
