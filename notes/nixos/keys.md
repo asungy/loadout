@@ -1,3 +1,8 @@
+## ChatGPT Keys
+
+Ensure a GPG encrypted file called `.openai-key.gpg` exists on the home
+directory that contains the OpenAI API key.
+
 ## GitHub Keys
 
 ### GPG key

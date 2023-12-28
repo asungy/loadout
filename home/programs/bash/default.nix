@@ -1,7 +1,7 @@
 # Reference: https://github.com/nix-community/home-manager/blob/master/modules/programs/bash.nix
 { pkgs, ... } :
 let
-  aliases = {
+  shellAliases = {
     archbox = "docker run --network=host -it --rm --name=archbox archlinux:latest /bin/bash";
     archbox-mnt = (
       "docker run --network=host -it --rm " +
@@ -15,13 +15,15 @@ let
     li = "ls --color=tty"; # easier typing for dvorak
     vim = "nix run github:asungy/nixim";
   };
-  cmdsForInteractiveShell = builtins.readFile ./rc.sh;
+
+  sessionVariables = {};
 in
 {
   programs.bash = {
+    inherit shellAliases sessionVariables;
+
     enable = true;
     enableCompletion = true;
-    initExtra = cmdsForInteractiveShell;
-    shellAliases = aliases;
+    initExtra = builtins.readFile ./rc.sh;
   };
 }
