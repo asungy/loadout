@@ -9,6 +9,7 @@ in {
   environment.systemPackages = with pkgs; [
     brightnessctl               # Brightness controller
     dunst                       # Notification daemon
+    grimblast                   # Screenshot utility
     hyprpaper                   # Wallpaper manager
     neovim                      # Ok text editor
     obs-studio                  # Screen recorder*
