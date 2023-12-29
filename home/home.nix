@@ -12,6 +12,7 @@ let
     git             # Version control
     htop            # Resource viewer
     keepassxc       # Password manager
+    obsidian        # Note-taker
     ripgrep         # A better `grep`
     tmux            # Terminal multiplexer
     todoist         # Todoist CLI
