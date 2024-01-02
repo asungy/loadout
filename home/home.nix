@@ -4,6 +4,7 @@ let
   homeDirectory = "/home/${username}";
 
   defaultPkgs = with pkgs; [
+    anki            # Spaced repetition flashcards
     bat             # A better `cat`
     brave           # Browser
     chatgpt-cli     # Thing that talks like a human
