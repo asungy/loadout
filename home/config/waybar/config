@@ -5,9 +5,12 @@
     // "width": 1280, // Waybar width
     "spacing": 4, // Gaps between modules (4px)
     // Choose the order of the modules
-    "modules-left": [],
+    "modules-left": ["hyprland/workspaces"],
     "modules-center": [],
     "modules-right": ["idle_inhibitor", "pulseaudio", "network", "battery", "clock"],
+    "hyprland/workspaces": {
+        "format": "{id}"
+    },
     "keyboard-state": {
         "numlock": true,
         "capslock": true,
