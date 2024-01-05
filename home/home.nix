@@ -10,13 +10,10 @@ let
     chatgpt-cli     # Thing that talks like a human
     cloc            # Line counter
     dropbox         # Cloud filesystem
-    git             # Version control
     htop            # Resource viewer
     keepassxc       # Password manager
     obsidian        # Note-taker
     ripgrep         # A better `grep`
-    tmux            # Terminal multiplexer
-    todoist         # Todoist CLI
     tree            # File tree viewer
     waybar          # Wayland bar
     wl-clipboard    # Clipboard/Terminal conduit
