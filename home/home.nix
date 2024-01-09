@@ -18,6 +18,7 @@ let
     waybar          # Wayland bar
     wl-clipboard    # Clipboard/Terminal conduit
     xclip           # Clipboard/Terminal conduit
+    zoom-us         # Video conferencing
   ];
 in
 {
