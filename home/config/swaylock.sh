@@ -1,16 +1,27 @@
 #!/usr/bin/env bash
 swaylock \
-    --screenshots \
     --clock \
+    --effect-blur 7x5 \
+    --effect-vignette 0.5:0.5 \
+    --fade-in 0.2 \
+    --grace 2 \
     --indicator \
     --indicator-radius 100 \
     --indicator-thickness 7 \
-    --effect-blur 7x5 \
-    --effect-vignette 0.5:0.5 \
-    --ring-color bb00cc \
-    --key-hl-color 880033 \
-    --line-color 00000000 \
+    --inside-clear-color 00000088 \
     --inside-color 00000088 \
+    --inside-ver-color 00000088 \
+    --inside-wrong-color 00000088 \
+    --key-hl-color 88000066 \
+    --line-color 00000000 \
+    --ring-clear-color 0fb9b1ff \
+    --ring-color 0fb9b1ff \
+    --ring-color 0fb9b1ff \
+    --ring-ver-color 0fb9b1ff \
+    --ring-wrong-color 0fb9b1ff \
+    --screenshots \
     --separator-color 00000000 \
-    --grace 2 \
-    --fade-in 0.2
+    --text-clear-color ffffffff \
+    --text-color ffffffff \
+    --text-ver-color ffffffff \
+    --text-wrong-color ffffffff
