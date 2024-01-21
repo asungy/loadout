@@ -42,6 +42,7 @@ in
       ".config/waybar/config".source = ./config/waybar/config;
       ".config/waybar/style.css".source = ./config/waybar/style.css;
       ".config/wofi/config".source = ./config/wofi.conf;
+      ".config/swaylock.sh".source = ./config/swaylock.sh;
     };
   };
 }

@@ -12,15 +12,14 @@ in {
     grimblast                   # Screenshot utility
     hyprpaper                   # Wallpaper manager
     neovim                      # Ok text editor
-    obs-studio                  # Screen recorder*
+    obs-studio                  # Screen recorder
     obs-studio-plugins.wlrobs   # OBS wayland plugin
     pavucontrol                 # PulseAudio GUI
     pinentry-curses             # GnuPG interface
+    swaylock-effects            # Screen locker
     wofi                        # Launcher/menu program
     xdg-desktop-portal-hyprland # Desktop portal
   ];
-  # * Note: this needs to be installed on the system (and not through a shell)
-  # to work properly with graphics drivers on Wayland.
 
   # Networking
   networking = {
@@ -36,6 +35,9 @@ in {
 
   # Wayland compositor
   programs.hyprland.enable = true;
+
+  # For swaylock to recognize user password
+  security.pam.services.swaylock = {};
 
   # Environment variables
   environment.variables = {
