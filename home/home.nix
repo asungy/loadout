@@ -39,10 +39,11 @@ in
     file = {
       ".config/hypr/hyprland.conf".source = ./config/hyprland.conf;
       ".config/hypr/hyprpaper.conf".source = ./config/hyprpaper.conf;
+      ".config/swayidle/config".source = ./config/swayidle.conf;
+      ".config/swaylock.sh".source = ./config/swaylock.sh;
       ".config/waybar/config".source = ./config/waybar/config;
       ".config/waybar/style.css".source = ./config/waybar/style.css;
       ".config/wofi/config".source = ./config/wofi.conf;
-      ".config/swaylock.sh".source = ./config/swaylock.sh;
     };
   };
 }

@@ -16,6 +16,7 @@ in {
     obs-studio-plugins.wlrobs   # OBS wayland plugin
     pavucontrol                 # PulseAudio GUI
     pinentry-curses             # GnuPG interface
+    swayidle                    # Idle daemon
     swaylock-effects            # Screen locker
     wofi                        # Launcher/menu program
     xdg-desktop-portal-hyprland # Desktop portal
