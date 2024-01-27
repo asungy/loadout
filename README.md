@@ -1,3 +1,3 @@
 # Loadout
 
-NixOS and Neovim configurations.
+Personal NixOS configuration.
