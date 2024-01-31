@@ -1,19 +1,19 @@
 # Change Default Audio Source
 
-List the available audio sources.
+List the available audio sinks.
 
 ```shell
 > wpctl status
 ...
- ├─ Sources:
- │      66. Built-in Audio Analog Stereo        [vol: 0.31]
- │  *   76. USB Audio Headset Microphone        [vol: 1.00]
- │      79. C920 PRO HD Webcam Analog Stereo    [vol: 0.71]
+ ├─ Sinks:
+ │  *   38. Built-in Audio Analog Stereo        [vol: 1.15]
+ │      75. USB Audio Headphones                [vol: 0.29]
+ │      77. USB Audio Line Out                  [vol: 0.40]
 ...
 ```
 
-Set the default audio source.
+Set the default audio sink.
 
 ```shell
-> wpctl set-default 66
+> wpctl set-default 75
 ```
