@@ -4,12 +4,17 @@ List channels:
 nixos https://nixos.org/channels/nixos-<version>
 ```
 
-Remove channel
+Remove channel:
 ```bash
 > sudo nix-channel --remove nixos
 ```
 
-Add channel
+Add channel:
 ```bash
 > sudo nix-channel --add nixos https://nixos.org/channels/nixos-unstable
+```
+
+Update the flake lockfile:
+```bash
+> sudo nix flake update
 ```

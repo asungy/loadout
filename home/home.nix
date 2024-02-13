@@ -12,7 +12,6 @@ let
     dropbox         # Cloud filesystem
     htop            # Resource viewer
     keepassxc       # Password manager
-    obsidian        # Note-taker
     ripgrep         # A better `grep`
     tree            # File tree viewer
     waybar          # Wayland bar

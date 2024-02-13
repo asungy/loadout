@@ -28,7 +28,7 @@ rebuild_home() {
 }
 
 rebuild_system() {
-    sudo nixos-rebuild switch --flake .#dell-g5
+    sudo nixos-rebuild switch --upgrade --flake .#dell-g5
 }
 
 rebuild_vm() {
