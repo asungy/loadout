@@ -7,7 +7,7 @@ let
     anki            # Spaced repetition flashcards
     bat             # A better `cat`
     brave           # Browser
-    chatgpt-cli     # Thing that talks like a human
+    chatgpt-cli     # AI buddy
     cloc            # Line counter
     dropbox         # Cloud filesystem
     htop            # Resource viewer
