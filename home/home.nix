@@ -18,6 +18,7 @@ let
     wl-clipboard    # Clipboard/Terminal conduit
     xclip           # Clipboard/Terminal conduit
     zoom-us         # Video conferencing
+    vesktop
   ];
 in
 {
