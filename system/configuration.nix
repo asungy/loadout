@@ -144,7 +144,7 @@ in {
 
     # Flakes settings
     package = pkgs.nixVersions.stable;
-    registry.nixpkgs.flake = inputs.nixpkgs;
+    registry.nixpkgs.flake = inputs.pinned-nixpkgs;
 
     settings = {
       # Automate `nix store optimise`. This saves disk space.

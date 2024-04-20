@@ -2,8 +2,18 @@
   let
     inherit (inputs.home-manager.lib) homeManagerConfiguration;
 
-    pkgs = import inputs.nixpkgs {
+    unstable = import inputs.unstable-nixpkgs {
       inherit system;
+    };
+
+    overlays = [
+      (final: prev: {
+        brave = unstable.brave;
+      })
+    ];
+
+    pkgs = import inputs.pinned-nixpkgs {
+      inherit system overlays;
       config.allowUnfree = true;
     };
 

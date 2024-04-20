@@ -1,8 +1,8 @@
 { inputs, system, ... } :
   let
-    inherit (inputs.nixpkgs.lib) nixosSystem;
+    inherit (inputs.pinned-nixpkgs.lib) nixosSystem;
 
-    pkgs = import inputs.nixpkgs {
+    pkgs = import inputs.pinned-nixpkgs {
       inherit system;
       config = {
         allowUnfree = true;
