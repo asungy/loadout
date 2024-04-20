@@ -14,7 +14,6 @@ let
     keepassxc       # Password manager
     ripgrep         # A better `grep`
     tree            # File tree viewer
-    vesktop         # Discord client
     waybar          # Wayland bar
     wl-clipboard    # Clipboard/Terminal conduit
     xclip           # Clipboard/Terminal conduit
