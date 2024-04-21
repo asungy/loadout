@@ -2,18 +2,8 @@
   let
     inherit (inputs.pinned-nixpkgs.lib) nixosSystem;
 
-    unstable = import inputs.unstable-nixpkgs {
-      inherit system;
-    };
-
-    overlays = [
-      (final: prev: {
-        hyprland = unstable.hyprland;
-      })
-    ];
-
     pkgs = import inputs.pinned-nixpkgs {
-      inherit system overlays;
+      inherit system;
       config = {
         allowUnfree = true;
       };
