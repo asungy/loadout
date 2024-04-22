@@ -28,9 +28,6 @@ output "eDP-1" disable
 # Set up lock screen.
 exec swayidle -w
 
-# Set default layout.
-exec swaymsg workspace_layout tabbed
- 
 # Start a terminal
 bindsym $win+t exec $term
 
