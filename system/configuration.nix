@@ -8,16 +8,18 @@ in {
   # System packages.
   environment.systemPackages = with pkgs; [
     brightnessctl               # Brightness controller
+    dmenu                       # Used for app launcher in Sway config.
     dunst                       # Notification daemon
     grimblast                   # Screenshot utility
-    hyprpaper                   # Wallpaper manager
-    neovim                      # Ok text editor
+    hyprpaper                   # Wallpaper manager for Hypr
+    neovim                      # Decent text editor
     obs-studio                  # Screen recorder
     obs-studio-plugins.wlrobs   # OBS wayland plugin
     pavucontrol                 # PulseAudio GUI
     pinentry-curses             # GnuPG interface
     swayidle                    # Idle daemon
     swaylock-effects            # Screen locker
+    wmenu                       # Dynamic Sway menu.
     wofi                        # Launcher/menu program
     xdg-desktop-portal-hyprland # Desktop portal
   ];
@@ -34,8 +36,9 @@ in {
     firewall.enable = true;
   };
 
-  # Wayland compositor
+  # Wayland compositors
   programs.hyprland.enable = true;
+  programs.sway.enable = true;
 
   # For swaylock to recognize user password
   security.pam.services.swaylock = {};
@@ -103,7 +106,7 @@ in {
   services.pcscd.enable = true;
   programs.gnupg.agent = {
     enable = true;
-    pinentryFlavor = "curses";
+    pinentryPackage = pkgs.pinentry-curses;
     enableSSHSupport = true;
   };
 
@@ -144,7 +147,7 @@ in {
 
     # Flakes settings
     package = pkgs.nixVersions.stable;
-    registry.nixpkgs.flake = inputs.pinned-nixpkgs;
+    registry.nixpkgs.flake = inputs.nixpkgs;
 
     settings = {
       # Automate `nix store optimise`. This saves disk space.

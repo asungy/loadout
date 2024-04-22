@@ -40,6 +40,7 @@ in
       ".config/gdb/gdbinit".source = ./config/gdb/gdbinit;
       ".config/hypr/hyprland.conf".source = ./config/hyprland.conf;
       ".config/hypr/hyprpaper.conf".source = ./config/hyprpaper.conf;
+      ".config/sway/config".source = ./config/sway/config;
       ".config/swayidle/config".source = ./config/swayidle.conf;
       ".config/swaylock.sh".source = ./config/swaylock.sh;
       ".config/waybar/config".source = ./config/waybar/config;
