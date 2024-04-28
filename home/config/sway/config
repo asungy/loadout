@@ -113,6 +113,9 @@ bindsym $win+Shift+minus move scratchpad
 # Toggle scratchpad.
 bindsym $win+minus scratchpad show
 
+# Set tabbed layout.
+workspace_layout tabbed
+
 # Resizing containers.
 mode "resize" {
     bindsym Left resize shrink width 10px
