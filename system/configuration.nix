@@ -12,6 +12,7 @@ in {
     dunst                       # Notification daemon
     grimblast                   # Screenshot utility
     hyprpaper                   # Wallpaper manager for Hypr
+    libnotify                   # Notification library
     neovim                      # Decent text editor
     obs-studio                  # Screen recorder
     obs-studio-plugins.wlrobs   # OBS wayland plugin
@@ -37,7 +38,10 @@ in {
   };
 
   # Wayland compositors
-  programs.hyprland.enable = true;
+  programs.hyprland = {
+    enable = true;
+    xwayland.enable = true;
+  };
   programs.sway.enable = true;
 
   # For swaylock to recognize user password
@@ -79,6 +83,12 @@ in {
 
   # Install custom udev configurations.
   services.udev.packages = [ udevRules ];
+
+  # Graphics settings.
+  hardware = {
+    opengl.enable = true;
+    nvidia.modesetting.enable = true;
+  };
 
   # Enable sound with pipewire.
   sound.enable = true;
