@@ -8,7 +8,7 @@ in {
   # System packages.
   environment.systemPackages = with pkgs; [
     brightnessctl               # Brightness controller
-    dmenu                       # Used for app launcher in Sway config.
+    dmenu                       # Used for app launcher in Sway config
     dunst                       # Notification daemon
     grimblast                   # Screenshot utility
     hyprpaper                   # Wallpaper manager for Hypr
@@ -20,7 +20,8 @@ in {
     pinentry-curses             # GnuPG interface
     swayidle                    # Idle daemon
     swaylock-effects            # Screen locker
-    wmenu                       # Dynamic Sway menu.
+    ventoy                      # Bootable USB utility
+    wmenu                       # Dynamic Sway menu
     wofi                        # Launcher/menu program
     xdg-desktop-portal-hyprland # Desktop portal
   ];
