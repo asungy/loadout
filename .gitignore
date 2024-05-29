@@ -1,2 +1,8 @@
 # Symlink that gets created after call to nixos-rebuild.
 result
+
+# Cargo outputs
+x/target/
+
+# Git worktrees
+worktrees/
