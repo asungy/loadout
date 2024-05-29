@@ -25,20 +25,8 @@ pub fn cli() -> Command {
             .action(ArgAction::SetTrue)
             .help("Build Sway output")
         )
-        .arg(Arg::new("hyprland")
-            .short('y')
-            .long("hyprland")
-            .action(ArgAction::SetTrue)
-            .help("Build Hyprland output")
-        )
-        .arg(Arg::new("i3")
-            .short('i')
-            .long("i3")
-            .action(ArgAction::SetTrue)
-            .help("Build i3 output")
-        )
         .group(ArgGroup::new("outputs")
-            .args(["sway", "hyprland", "i3"])
+            .args(["sway"])
             .required(true)
         )
 }
@@ -51,9 +39,7 @@ pub fn exec(matches: &ArgMatches) -> CliResult {
     let test = *matches.get_one::<bool>("test").unwrap();
 
     match matches.get_one::<clap::Id>("outputs").unwrap().as_str() {
-        "i3"       => system::exec(system::Output::I3, test)?,
         "sway"     => system::exec(system::Output::Sway, test)?,
-        "hyprland" => system::exec(system::Output::Hyprland, test)?,
         _ => unreachable!("Unexpected flag in arg group."),
     };
 
