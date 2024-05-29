@@ -39,11 +39,12 @@ pub fn exec(matches: &ArgMatches) -> CliResult {
 
     let test = *matches.get_one::<bool>("test").unwrap();
 
-    home::exec()?;
     match matches.get_one::<clap::Id>("outputs").unwrap().as_str() {
         "sway"     => system::exec(system::Output::Sway, test)?,
         _ => unreachable!("Unexpected flag in arg group."),
     };
+
+    home::exec()?;
 
     Ok(())
 }
