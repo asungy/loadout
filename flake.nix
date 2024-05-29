@@ -8,6 +8,8 @@
       url = "github:nix-community/home-manager/21b078306a2ab68748abf72650db313d646cf2ca";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    rust-overlay.url = "github:oxalica/rust-overlay";
   };
 
   outputs = inputs:
@@ -20,5 +22,7 @@
 
     nixosConfigurations =
       import ./outputs/nixos-conf.nix { inherit inputs system; };
+
+    packages.${system}.x = import ./x { inherit inputs system; };
   };
 }
