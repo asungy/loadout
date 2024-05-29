@@ -8,19 +8,22 @@
     [ (modulesPath + "/installer/scan/not-detected.nix")
     ];
 
-  boot.initrd.availableKernelModules = [ "xhci_pci" "ahci" "nvme" "usb_storage" "usbhid" "sd_mod" ];
+  boot.initrd.availableKernelModules = [ "nvme" "xhci_pci" "thunderbolt" "usb_storage" "usbhid" "sd_mod" ];
   boot.initrd.kernelModules = [ ];
-  boot.kernelModules = [ "kvm-intel" ];
+  boot.kernelModules = [ "kvm-amd" ];
   boot.extraModulePackages = [ ];
 
   fileSystems."/" =
-    { device = "/dev/disk/by-uuid/102ab44a-fe0d-44c2-b49a-1149b5b53ab3";
+    { device = "/dev/disk/by-uuid/674ddb12-d65f-4a97-8b86-fe397fc20ea6";
       fsType = "ext4";
     };
 
+  boot.initrd.luks.devices."luks-d6bb58c0-5c8f-4014-a0ac-cadd6004d5e0".device = "/dev/disk/by-uuid/d6bb58c0-5c8f-4014-a0ac-cadd6004d5e0";
+
   fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/F74C-8BB2";
+    { device = "/dev/disk/by-uuid/928A-1B9C";
       fsType = "vfat";
+      options = [ "fmask=0022" "dmask=0022" ];
     };
 
   swapDevices = [ ];
@@ -30,11 +33,8 @@
   # still possible to use this option, but it's recommended to use it in conjunction
   # with explicit per-interface declarations with `networking.interfaces.<interface>.useDHCP`.
   networking.useDHCP = lib.mkDefault true;
-  # networking.interfaces.enp58s0u1u4.useDHCP = lib.mkDefault true;
-  # networking.interfaces.enp60s0.useDHCP = lib.mkDefault true;
-  # networking.interfaces.wlo1.useDHCP = lib.mkDefault true;
+  # networking.interfaces.wlp1s0.useDHCP = lib.mkDefault true;
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
-  powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
-  hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
+  hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 }

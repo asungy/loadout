@@ -10,11 +10,11 @@
     };
   in
 {
-  dell-g5 = nixosSystem {
+  framework = nixosSystem {
     inherit pkgs system;
     specialArgs = { inherit inputs; };
     modules = [
-      ../system/machine/dell-g5
+      ../system/machine/framework
       ../system/configuration.nix
     ];
   };

@@ -10,5 +10,5 @@
   boot.loader.efi.canTouchEfiVariables = true;
 
   # Networking
-  networking.hostName = "dell-g5";
+  networking.hostName = "framework";
 }

@@ -28,7 +28,6 @@ in
     delta = deltaConfig;
     enable = true;
     extraConfig = gitConfig;
-    signing = signingConfig;
     userEmail = "62207329+asungy@users.noreply.github.com";
     userName = "asungy";
   };

@@ -28,11 +28,11 @@ rebuild_home() {
 }
 
 rebuild_system() {
-    sudo nixos-rebuild switch --upgrade --flake .#dell-g5
+    sudo nixos-rebuild switch --upgrade --flake .#framework
 }
 
 rebuild_vm() {
-    sudo nixos-rebuild build-vm --flake .#dell-g5
+    sudo nixos-rebuild build-vm --flake .#framework
 }
 
 fresh_install() {
@@ -41,7 +41,7 @@ fresh_install() {
 }
 
 test_system() {
-    sudo nixos-rebuild test --flake .#dell-g5
+    sudo nixos-rebuild test --flake .#framework
 }
 
 main() {
