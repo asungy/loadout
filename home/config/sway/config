@@ -102,7 +102,7 @@ bindsym $win+Shift+9 move container to workspace number 9
 bindsym $win+Shift+0 move container to workspace number 10
 
 # Toggle window layout.
-bindsym $win+q layout toggle tabbed stacking splith
+# bindsym $win+q layout toggle tabbed stacking splith
 
 # Toggle the current focus between tiling and floating mode
 bindsym $win+y floating toggle
