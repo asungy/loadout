@@ -5,14 +5,75 @@ set $win Mod4
 # Terminal emulator.
 set $term alacritty
 
+# Turn on numlock.
+exec_always --no-startup-id numlockx on
+
 # Start a terminal.
 bindsym $win+t exec $term
 
 # Open application launcher.
 bindsym $win+w exec dmenu_run
 
+# Kill focused window
+bindsym $win+c kill
+
+# Start browser.
+bindsym $win+b exec brave
+
+# Start password manager.
+bindsym $win+k exec keepassxc
+
 # Reload i3 configuration.
 bindsym $win+$alt+r reload
 
 # Exit i3.
-bindsym $win+$alt+q exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
+bindsym $win+$alt+q exec "i3-msg exit"
+
+# Move focus.
+bindsym $win+Left focus left
+bindsym $win+Down focus down
+bindsym $win+Up focus up
+bindsym $win+Right focus right
+
+# Move focused window.
+bindsym $win+Shift+Left move left
+bindsym $win+Shift+Down move down
+bindsym $win+Shift+Up move up
+bindsym $win+Shift+Right move right
+
+# Switch to workspace
+bindsym $win+1 workspace number 1
+bindsym $win+2 workspace number 2
+bindsym $win+3 workspace number 3
+bindsym $win+4 workspace number 4
+bindsym $win+5 workspace number 5
+bindsym $win+6 workspace number 6
+bindsym $win+7 workspace number 7
+bindsym $win+8 workspace number 8
+bindsym $win+9 workspace number 9
+bindsym $win+0 workspace number 10
+
+# Move focused container to workspace
+bindsym $win+Shift+1 move container to workspace number 1
+bindsym $win+Shift+2 move container to workspace number 2
+bindsym $win+Shift+3 move container to workspace number 3
+bindsym $win+Shift+4 move container to workspace number 4
+bindsym $win+Shift+5 move container to workspace number 5
+bindsym $win+Shift+6 move container to workspace number 6
+bindsym $win+Shift+7 move container to workspace number 7
+bindsym $win+Shift+8 move container to workspace number 8
+bindsym $win+Shift+9 move container to workspace number 9
+bindsym $win+Shift+0 move container to workspace number 10
+
+# Volume controls.
+bindsym XF86AudioRaiseVolume exec 'wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+'
+bindsym XF86AudioLowerVolume exec 'wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-'
+bindsym XF86AudioMute        exec 'wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle'
+
+# Brightness.
+bindsym XF86MonBrightnessUp   exec 'brightnessctl set 10%+'
+bindsym XF86MonBrightnessDown exec 'brightnessctl set 10%-'
+
+# Set tabbed layout.
+workspace_layout tabbed
+

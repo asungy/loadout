@@ -7,6 +7,7 @@ in {
 
   # System packages.
   environment.systemPackages = with pkgs; [
+    numlockx
   ];
 
   environment.pathsToLink = [ "/libexec" ]; # links /libexec from derivations to /run/current-system/sw 
