@@ -7,7 +7,6 @@ in {
 
   # System packages.
   environment.systemPackages = with pkgs; [
-    xorg.xinit         # Start X server
   ];
 
   environment.pathsToLink = [ "/libexec" ]; # links /libexec from derivations to /run/current-system/sw 

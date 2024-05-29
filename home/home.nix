@@ -53,7 +53,6 @@ in
       ".config/wofi/config".source = ./config/wofi.conf;
 
       # i3
-      ".xinitrc".source = ./config/i3/xinitrc;
       ".config/i3/config".source = ./config/i3/config;
     };
   };
