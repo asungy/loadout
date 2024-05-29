@@ -1,0 +1,12 @@
+# Key aliases.
+set $alt Mod1
+set $win Mod4
+
+# Terminal emulator.
+set $term alacritty
+
+# Start a terminal
+bindsym $win+t exec $term
+
+# Exit i3.
+bindsym $win+Mod1+q exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
