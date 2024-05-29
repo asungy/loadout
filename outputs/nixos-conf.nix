@@ -10,12 +10,21 @@
     };
   in
 {
-  framework = nixosSystem {
+  i3 = nixosSystem {
     inherit pkgs system;
     specialArgs = { inherit inputs; };
     modules = [
       ../system/machine/framework
-      ../system/configuration.nix
+      ../system/i3.nix
+    ];
+  };
+
+  sway = nixosSystem {
+    inherit pkgs system;
+    specialArgs = { inherit inputs; };
+    modules = [
+      ../system/machine/framework
+      ../system/sway.nix
     ];
   };
 }

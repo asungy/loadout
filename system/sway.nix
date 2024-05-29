@@ -8,7 +8,6 @@ in {
   # System packages.
   environment.systemPackages = with pkgs; [
     brightnessctl               # Brightness controller
-    dmenu                       # Used for app launcher in Sway config
     dunst                       # Notification daemon
     grimblast                   # Screenshot utility
     hyprpaper                   # Wallpaper manager for Hypr
