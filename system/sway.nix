@@ -7,30 +7,23 @@ in {
 
   # System packages.
   environment.systemPackages = with pkgs; [
-    numlockx
+    brightnessctl               # Brightness controller
+    dunst                       # Notification daemon
+    grimblast                   # Screenshot utility
+    hyprpaper                   # Wallpaper manager for Hypr
+    libnotify                   # Notification library
+    neovim                      # Decent text editor
+    obs-studio                  # Screen recorder
+    obs-studio-plugins.wlrobs   # OBS wayland plugin
+    pavucontrol                 # PulseAudio GUI
+    pinentry-curses             # GnuPG interface
+    swayidle                    # Idle daemon
+    swaylock-effects            # Screen locker
+    ventoy                      # Bootable USB utility
+    wmenu                       # Dynamic Sway menu
+    wofi                        # Launcher/menu program
+    xdg-desktop-portal-hyprland # Desktop portal
   ];
-
-  environment.pathsToLink = [ "/libexec" ]; # links /libexec from derivations to /run/current-system/sw 
-  services.xserver = {
-    enable = true;
-
-    desktopManager = {
-      xterm.enable = false;
-    };
-   
-    displayManager = {
-        defaultSession = "none+i3";
-    };
-
-    windowManager.i3 = {
-      enable = true;
-      extraPackages = with pkgs; [
-        dmenu    # application launcher
-        i3status # i3 status bar
-        i3lock   # default i3 screen locker
-     ];
-    };
-  };
 
   # Networking
   networking = {
@@ -43,6 +36,16 @@ in {
 
     firewall.enable = true;
   };
+
+  # Wayland compositors
+  programs.hyprland = {
+    enable = true;
+    xwayland.enable = true;
+  };
+  programs.sway.enable = true;
+
+  # For swaylock to recognize user password
+  security.pam.services.swaylock = {};
 
   # Environment variables
   environment.variables = {
