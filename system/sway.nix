@@ -23,6 +23,7 @@ in {
     wmenu                       # Dynamic Sway menu
     wofi                        # Launcher/menu program
     xdg-desktop-portal-hyprland # Desktop portal
+    wgnord                      # NordVPN client
   ];
 
   # Networking
@@ -191,6 +192,12 @@ in {
       # };
     };
   };
+
+  # Create directory for wgnord (NordVPN)
+  systemd.tmpfiles.rules = [
+    "d /var/lib/wgnord 0700 root root"
+    "d /etc/wireguard 0700 root root"
+  ];
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
