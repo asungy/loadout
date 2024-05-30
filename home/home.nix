@@ -7,17 +7,12 @@ let
     anki            # Spaced repetition flashcards
     bat             # A better `cat`
     brave           # Browser
-    chatgpt-cli     # AI buddy
     cloc            # Line counter
     dropbox         # Cloud filesystem
     htop            # Resource viewer
     keepassxc       # Password manager
     ripgrep         # A better `grep`
     tree            # File tree viewer
-    vesktop         # Discord client
-    waybar          # Wayland bar
-    wl-clipboard    # Clipboard/Terminal conduit
-    xclip           # Clipboard/Terminal conduit
     zoom-us         # Video conferencing
   ];
 in

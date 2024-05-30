@@ -21,10 +21,13 @@ in
     swayidle                    # Idle daemon
     swaylock-effects            # Screen locker
     ventoy                      # Bootable USB utility
+    vesktop                     # Discord client
+    waybar                      # Wayland bar
+    wgnord                      # NordVPN client
+    wl-clipboard                # Clipboard/Terminal conduit
     wmenu                       # Dynamic Sway menu
     wofi                        # Launcher/menu program
     xdg-desktop-portal-hyprland # Desktop portal
-    wgnord                      # NordVPN client
   ];
 
   # Networking

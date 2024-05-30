@@ -11,6 +11,7 @@ in {
     neovim        # Decent text editor
     numlockx      # X server numlock
     pavucontrol   # PulseAudio GUI
+    xclip         # Clipboard/Terminal conduit
   ];
 
   environment.pathsToLink = [ "/libexec" ]; # links /libexec from derivations to /run/current-system/sw 
