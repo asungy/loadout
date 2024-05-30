@@ -28,6 +28,11 @@ output "eDP-1" disable
 # Set up lock screen.
 exec swayidle -w
 
+# XDG environment stuff for Sway.
+# https://elis.nu/blog/2021/02/detailed-setup-of-screen-sharing-in-sway/
+exec systemctl --user import-environment XDG_SESSION_TYPE XDG_CURRENT_DESKTOP
+exec dbus-update-activation-environment WAYLAND_DISPLAY
+
 # Start a terminal
 bindsym $win+t exec $term
 

@@ -35,6 +35,9 @@ in
       # GDB
       ".config/gdb/gdbinit".source = ./config/gdb/gdbinit;
 
+      # XDG WLR nonsense
+      ".config/xdg-desktop-portal/wlr-portals.conf".source = ./config/wlr-portals.conf;
+
       # Sway
       ".config/sway/config".source = ./config/sway/config;
       ".config/swayidle/config".source = ./config/swayidle.conf;
