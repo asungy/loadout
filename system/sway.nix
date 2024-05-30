@@ -53,9 +53,14 @@ in
     GTK_IM_MODULE = "ibus";
     QT_IM_MODULE = "ibus";
     XMODIFIERS = "@im=ibus";
+
     # Set default editor.
     EDITOR = "nvim";
     VISUAL = "nvim";
+
+    # XDG
+    XDG_SESSION_TYPE = "wayland";
+    XDG_CURRENT_DESKTOP = "sway";
   };
 
   # Set your time zone.
