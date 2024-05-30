@@ -35,10 +35,6 @@ in
       # GDB
       ".config/gdb/gdbinit".source = ./config/gdb/gdbinit;
 
-      # Hyprland
-      ".config/hypr/hyprland.conf".source = ./config/hyprland.conf;
-      ".config/hypr/hyprpaper.conf".source = ./config/hyprpaper.conf;
-
       # Sway
       ".config/sway/config".source = ./config/sway/config;
       ".config/swayidle/config".source = ./config/swayidle.conf;
