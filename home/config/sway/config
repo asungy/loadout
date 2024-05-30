@@ -29,7 +29,7 @@ output "eDP-1" disable
 exec swayidle -w
 
 # XDG environment stuff for Sway.
-# https://elis.nu/blog/2021/02/detailed-setup-of-screen-sharing-in-sway/
+# Reference: https://elis.nu/blog/2021/02/detailed-setup-of-screen-sharing-in-sway/
 exec systemctl --user import-environment XDG_SESSION_TYPE XDG_CURRENT_DESKTOP
 exec dbus-update-activation-environment WAYLAND_DISPLAY
 
