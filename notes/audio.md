@@ -1,7 +1,6 @@
 # Change Default Audio Source
 
-List the available audio sinks.
-
+List the available audio sinks:
 ```shell
 > wpctl status
 ...
@@ -12,8 +11,13 @@ List the available audio sinks.
 ...
 ```
 
-Set the default audio sink.
-
+Set the default audio sink:
 ```shell
 > wpctl set-default 75
+```
+
+Increase/decrease microphone volume:
+```shell
+> wpctl set-volume @DEFAULT_AUDIO_SOURCE@ 5%+
+> wpctl set-volume @DEFAULT_AUDIO_SOURCE@ 5%-
 ```
