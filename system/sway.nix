@@ -154,6 +154,8 @@ in
   #
   # Reference: https://nixos.org/manual/nix/stable/command-ref/conf-file.html
   nix = {
+    # Optimise nix store.
+    optimise.automatic = true;
     # Automate garbage collection.
     gc = {
       automatic = true;
