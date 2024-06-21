@@ -5,14 +5,25 @@ pub enum Output {
     Sway,
 }
 
-fn build(flake_output: &str, test: bool) -> Result<(), anyhow::Error> {
-    let subcommand = if test { "test" } else { "switch" };
+pub enum BuildOption {
+    Boot,
+    Switch,
+    Test,
+}
+
+fn build(flake_output: &str, option: BuildOption) -> Result<(), anyhow::Error> {
+    let subcommand = match option {
+        BuildOption::Boot => "boot",
+        BuildOption::Test => "test",
+        BuildOption::Switch => "switch"
+    };
     let command = format!(
         "sudo nixos-rebuild {subcommand} --upgrade --flake .#{output}",
         subcommand = subcommand,
         output = flake_output,
     );
 
+    println!("Running: {}", command);
     let output = Command::new("sh")
         .arg("-c")
         .arg(command)
@@ -28,9 +39,9 @@ fn build(flake_output: &str, test: bool) -> Result<(), anyhow::Error> {
     Ok(())
 }
 
-pub fn exec(output: Output, test: bool) -> Result<(), anyhow::Error> {
+pub fn exec(output: Output, option: BuildOption) -> Result<(), anyhow::Error> {
     match output {
-        Output::Sway => build("sway", test),
-        Output::I3 => build("i3", test),
+        Output::Sway => build("sway", option),
+        Output::I3 => build("i3", option),
     }
 }
