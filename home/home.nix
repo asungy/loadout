@@ -9,6 +9,7 @@ let
     brave           # Browser
     cloc            # Line counter
     dropbox         # Cloud filesystem
+    ffmpeg          # Media editing tool
     htop            # Resource viewer
     keepassxc       # Password manager
     ripgrep         # A better `grep`
