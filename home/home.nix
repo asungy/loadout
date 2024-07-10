@@ -12,6 +12,7 @@ let
     ffmpeg          # Media editing tool
     htop            # Resource viewer
     keepassxc       # Password manager
+    obsidian        # Note-taking app
     ripgrep         # A better `grep`
     tree            # File tree viewer
     zoom-us         # Video conferencing
