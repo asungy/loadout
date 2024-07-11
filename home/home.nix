@@ -4,18 +4,20 @@ let
   homeDirectory = "/home/${username}";
 
   defaultPkgs = with pkgs; [
-    anki            # Spaced repetition flashcards
-    bat             # A better `cat`
-    brave           # Browser
-    cloc            # Line counter
-    dropbox         # Cloud filesystem
-    ffmpeg          # Media editing tool
-    htop            # Resource viewer
-    keepassxc       # Password manager
-    obsidian        # Note-taking app
-    ripgrep         # A better `grep`
-    tree            # File tree viewer
-    zoom-us         # Video conferencing
+    anki                # Spaced repetition flashcards
+    bat                 # A better `cat`
+    brave               # Browser
+    cloc                # Line counter
+    dropbox             # Cloud filesystem
+    ffmpeg              # Media editing tool
+    ffmpeg              # OP media software
+    htop                # Resource viewer
+    keepassxc           # Password manager
+    libsForQt5.kdenlive # Video editor
+    obsidian            # Note-taking app
+    ripgrep             # A better `grep`
+    tree                # File tree viewer
+    zoom-us             # Video conferencing
   ];
 in
 {
