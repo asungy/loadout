@@ -68,7 +68,7 @@ floating_modifier $win normal
 bindsym $win+$alt+r reload
 
 # Exit Sway.
-bindsym $win+Mod1+q exec swaymsg exit
+bindsym $win+$alt+q exec swaymsg exit
 
 # Move focus.
 bindsym $win+Left focus left
