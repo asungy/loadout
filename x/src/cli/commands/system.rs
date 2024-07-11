@@ -23,18 +23,13 @@ pub fn cli() -> Command {
             .action(ArgAction::SetTrue)
             .help("Rebuild and activate on next boot")
         )
-        .arg(Arg::new("i3")
-            .long("i3")
-            .action(ArgAction::SetTrue)
-            .help("Build i3 output")
-        )
         .arg(Arg::new("sway")
             .long("sway")
             .action(ArgAction::SetTrue)
             .help("Build Sway output")
         )
         .group(ArgGroup::new("outputs")
-            .args(["sway", "i3"])
+            .args(["sway"])
             .required(true)
         )
         .group(ArgGroup::new("build_options")
@@ -55,7 +50,6 @@ pub fn exec(matches: &ArgMatches) -> CliResult {
     };
 
     match matches.get_one::<clap::Id>("outputs").unwrap().as_str() {
-        "i3"   => system::exec(system::Output::I3, build_option)?,
         "sway" => system::exec(system::Output::Sway, build_option)?,
         _ => unreachable!("Unexpected flag in arg group."),
     };

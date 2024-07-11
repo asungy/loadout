@@ -1,7 +1,6 @@
 use std::process::Command;
 
 pub enum Output {
-    I3,
     Sway,
 }
 
@@ -42,6 +41,5 @@ fn build(flake_output: &str, option: BuildOption) -> Result<(), anyhow::Error> {
 pub fn exec(output: Output, option: BuildOption) -> Result<(), anyhow::Error> {
     match output {
         Output::Sway => build("sway", option),
-        Output::I3 => build("i3", option),
     }
 }
