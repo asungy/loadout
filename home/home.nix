@@ -17,6 +17,7 @@ let
     obsidian            # Note-taking app
     ripgrep             # A better `grep`
     tree                # File tree viewer
+    vlc                 # Video player
     zoom-us             # Video conferencing
   ];
 in
