@@ -44,7 +44,7 @@ pub fn exec(matches: &ArgMatches) -> CliResult {
         return Err(anyhow::anyhow!("No outputs provided").into());
     }
 
-    let build_option = match matches.get_one::<clap::Id>("build_options").unwrap().as_str() {
+    let build_option = match matches.get_one::<clap::Id>("build_options").unwrap_or(&clap::Id::from("")).as_str() {
         "test" => system::BuildOption::Test,
         "boot" => system::BuildOption::Boot,
         _ => system::BuildOption::Switch,
