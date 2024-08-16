@@ -23,7 +23,7 @@ output * bg ~/.wallpaper fill
 # Disable primary monitor because monitor mirroring is not supported in Sway.
 #
 # Comment this out when computer is not connected to an external monitor.
-output "eDP-1" disable
+# output "eDP-1" disable
 
 # Set up lock screen.
 exec swayidle -w
