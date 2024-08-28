@@ -25,7 +25,7 @@ pub fn cli() -> Command {
 
 
 pub fn exec(matches: &ArgMatches) -> CliResult {
-    let monitor_config = match matches.get_one::<clap::Id>("monitor_config").unwrap().as_str() {
+    let monitor_config = match matches.get_one::<clap::Id>("monitor_config").unwrap_or(&clap::Id::from("")).as_str() {
         "laptop" => Some(MonitorConfig::Laptop),
         "external" => Some(MonitorConfig::ExternalMonitor),
         _ => None,
