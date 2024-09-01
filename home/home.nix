@@ -8,9 +8,9 @@ let
     bat                 # A better `cat`
     brave               # Browser
     cloc                # Line counter
+    jq                  # Steroids for JSON
     devenv              # Nix dev environments
     dropbox             # Cloud filesystem
-    ffmpeg              # Media editing tool
     ffmpeg              # OP media software
     htop                # Resource viewer
     keepassxc           # Password manager
