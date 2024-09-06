@@ -12,7 +12,6 @@ let
     );
     cpwd = "pwd | wl-copy";
     ls = "ls --color=tty";
-    li = "ls --color=tty"; # easier typing for dvorak
     vim = "nix run github:asungy/xvim";
   };
 
