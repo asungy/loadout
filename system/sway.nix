@@ -88,7 +88,10 @@ in
   };
 
   # Install custom udev configurations.
-  services.udev.packages = [ udevRules ];
+  services.udev.packages = [
+    udevRules
+    pkgs.android-udev-rules
+  ];
 
   # Graphics settings.
   hardware = {
@@ -128,7 +131,7 @@ in
   # User.
   users.users.${username} = {
     isNormalUser = true;
-    extraGroups = ["docker" "networkmanager" "wheel"];
+    extraGroups = ["docker" "networkmanager" "wheel" "adbusers"];
     shell = pkgs.bash;
     password = "";
   };

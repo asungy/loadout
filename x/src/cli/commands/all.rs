@@ -31,7 +31,7 @@ pub fn cli() -> Command {
         )
         .group(ArgGroup::new("outputs")
             .args(["sway"])
-            .required(true)
+            .required(false)
         )
         .group(ArgGroup::new("build_options")
             .args(["test", "boot"])
@@ -50,9 +50,8 @@ pub fn exec(matches: &ArgMatches) -> CliResult {
         _ => system::BuildOption::Switch,
     };
 
-    match matches.get_one::<clap::Id>("outputs").unwrap().as_str() {
-        "sway" => system::exec(system::Output::Sway, build_option)?,
-        _ => unreachable!("Unexpected flag in arg group."),
+    match matches.get_one::<clap::Id>("outputs").unwrap_or(&clap::Id::from("")).as_str() {
+        _ => system::exec(system::Output::Sway, build_option)?,
     };
 
     home::exec()?;
