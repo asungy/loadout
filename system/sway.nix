@@ -131,7 +131,7 @@ in
   # User.
   users.users.${username} = {
     isNormalUser = true;
-    extraGroups = ["docker" "networkmanager" "wheel" "adbusers"];
+    extraGroups = ["docker" "networkmanager" "wheel"];
     shell = pkgs.bash;
     password = "";
   };
