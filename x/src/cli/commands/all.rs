@@ -40,10 +40,6 @@ pub fn cli() -> Command {
 }
 
 pub fn exec(matches: &ArgMatches) -> CliResult {
-    if !matches.contains_id("outputs") {
-        return Err(anyhow::anyhow!("No outputs provided").into());
-    }
-
     let build_option = match matches.get_one::<clap::Id>("build_options").unwrap_or(&clap::Id::from("")).as_str() {
         "test" => system::BuildOption::Test,
         "boot" => system::BuildOption::Boot,
