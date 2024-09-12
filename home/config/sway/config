@@ -110,10 +110,10 @@ bindsym $win+Shift+0 move container to workspace number 10
 # bindsym $win+q layout toggle tabbed stacking splith
 
 # Toggle the current focus between tiling and floating mode
-bindsym $win+y floating toggle
+bindsym $win+y floating toggle, resize set width 1080 height 720
 
 # Move focused window to scratchpad.
-bindsym $win+Shift+minus move scratchpad
+bindsym $win+Shift+minus floating enable, resize set width 1080 height 720, move scratchpad
 
 # Toggle scratchpad.
 bindsym $win+minus scratchpad show
