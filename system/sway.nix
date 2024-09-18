@@ -17,6 +17,7 @@ in
     obs-studio-plugins.wlrobs # OBS wayland plugin
     pavucontrol               # PulseAudio GUI
     pinentry-curses           # GnuPG interface
+    satty                     # Image annotation tool
     swayidle                  # Idle daemon
     swaylock-effects          # Screen locker
     ventoy                    # Bootable USB utility
