@@ -8,15 +8,16 @@ let
     bat                 # A better `cat`
     brave               # Browser
     cloc                # Line counter
-    jq                  # Steroids for JSON
     devenv              # Nix dev environments
     dropbox             # Cloud filesystem
     ffmpeg              # OP media software
     htop                # Resource viewer
+    jq                  # Steroids for JSON
     keepassxc           # Password manager
     libsForQt5.kdenlive # Video editor
     obsidian            # Note-taking app
     ripgrep             # A better `grep`
+    tldr                # All the manpages
     tree                # File tree viewer
     vlc                 # Video player
     zoom-us             # Video conferencing
