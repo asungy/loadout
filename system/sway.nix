@@ -4,7 +4,7 @@ let
   username = "asungy";
 in
 {
-  imports = [ inputs.nix-minecraft.nixosModules.minecraft-servers ];
+  imports = [];
 
   # System packages.
   environment.systemPackages = with pkgs; [
@@ -201,25 +201,6 @@ in
       #   enable = true;
       #   setSocketVariable = true;
       # };
-    };
-  };
-
-  # Minecraft server.
-  services.minecraft-servers = {
-    enable = true;
-    eula = true;
-    servers = {
-      mind-palace = {
-        enable = true;
-        package = pkgs.fabricServers.fabric-1_21;
-
-        serverProperties = {
-          gamemode = "creative";
-          difficulty = "peaceful";
-          simulation-distance = 10;
-          level-seed = "4";
-        };
-      };
     };
   };
 
