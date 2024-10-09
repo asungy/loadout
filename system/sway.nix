@@ -1,10 +1,10 @@
-{ pkgs, inputs, config, ... } :
+{ pkgs, inputs, ... } :
 let
   udevRules = pkgs.callPackage ./udev/default.nix { inherit pkgs; };
   username = "asungy";
 in
 {
-  imports = [];
+  imports = [ inputs.nix-minecraft.nixosModules.minecraft-servers ];
 
   # System packages.
   environment.systemPackages = with pkgs; [
@@ -84,7 +84,8 @@ in
 
   # Set up input methods (keyboards).
   i18n.inputMethod = {
-    enabled = "ibus";
+    enable = true;
+    type = "ibus";
     ibus.engines = with pkgs.ibus-engines; [ libpinyin ];
   };
 
@@ -96,7 +97,7 @@ in
 
   # Graphics settings.
   hardware = {
-    opengl.enable = true;
+    graphics.enable = true;
     nvidia.modesetting.enable = true;
   };
 
@@ -200,6 +201,25 @@ in
       #   enable = true;
       #   setSocketVariable = true;
       # };
+    };
+  };
+
+  # Minecraft server.
+  services.minecraft-servers = {
+    enable = true;
+    eula = true;
+    servers = {
+      mind-palace = {
+        enable = true;
+        package = pkgs.fabricServers.fabric-1_21;
+
+        serverProperties = {
+          gamemode = "creative";
+          difficulty = "peaceful";
+          simulation-distance = 10;
+          level-seed = "4";
+        };
+      };
     };
   };
 
