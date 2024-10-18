@@ -17,6 +17,7 @@ let
     libsForQt5.kdenlive # Video editor
     obsidian            # Note-taking app
     prismlauncher       # Minecraft launcher
+    remmina             # RDP Client
     ripgrep             # A better `grep`
     tldr                # All the manpages
     tree                # File tree viewer
