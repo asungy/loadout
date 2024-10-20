@@ -8,6 +8,6 @@ use std::process::ExitCode;
 fn main() -> ExitCode {
     match cli::exec() {
         Ok(_) => ExitCode::SUCCESS,
-        Err(error) => error.exit_code(),
+        Err(_) => ExitCode::FAILURE,
     }
 }

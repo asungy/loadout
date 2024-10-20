@@ -1,6 +1,6 @@
 use std::process::Command;
 
-pub fn exec() -> Result<(), anyhow::Error> {
+pub fn exec() -> anyhow::Result<()> {
     let output = Command::new("sh")
         .arg("-c")
         .arg("sudo nix build .#homeConfigurations.asungy.activationPackage")

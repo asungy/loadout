@@ -5,6 +5,18 @@ pub enum MonitorConfig {
     ExternalMonitor,
 }
 
+impl std::str::FromStr for MonitorConfig {
+    type Err = anyhow::Error;
+
+    fn from_str(s: &str) -> Result<Self, Self::Err> {
+        match s {
+            "laptop" => Ok(MonitorConfig::Laptop),
+            "external" => Ok(MonitorConfig::ExternalMonitor),
+            _ => Err(anyhow::anyhow!(format!("Unrecognized monitor option: {s}"))),
+        }
+    }
+}
+
 const COMMENTED: &str = "\n# output \"eDP-1\" disable";
 const UNCOMMENTED: &str = "\noutput \"eDP-1\" disable";
 const SWAY_CONFIG_FILE: &str = "home/config/sway/config";
@@ -30,4 +42,3 @@ pub fn set_monitor(monitor_config: MonitorConfig) -> Result<(), std::io::Error> 
     file.write(new_contents.as_bytes())?;
     Ok(())
 }
-
