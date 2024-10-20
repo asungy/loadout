@@ -8,5 +8,5 @@ pkgs.rustPlatform.buildRustPackage {
   src = pkgs.lib.cleanSource ./.;
 
   cargoLock.lockFile = ./Cargo.lock;
-  cargoBuildFlags = "--release";
+  cargoBuildFlags = "";
 }
