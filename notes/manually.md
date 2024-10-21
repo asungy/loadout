@@ -8,7 +8,7 @@ Actions that currently require a manual set up for a desired experience.
 > creates a soft link to a non(conveniently)-deterministic path to the file.
 > It seems that `hyprpaper` cannot read softlinks to image files.
 
-- [ ] Copy desired wallpaper to `$HOME/.wallpaper` (`$HOME/.background-image` if using i3)
+- [ ] Copy desired wallpaper to `$HOME/.wallpaper`.
 
 ## Set GPG keys
 - [ ] See: https://github.com/asungy/loadout/blob/main/notes/nixos/keys.md

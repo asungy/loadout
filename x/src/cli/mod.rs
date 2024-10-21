@@ -1,4 +1,5 @@
 mod all;
+mod copy;
 mod home;
 mod system;
 
@@ -13,7 +14,12 @@ trait ExecCommand {
 }
 
 fn exec_commands() -> Vec<Box<dyn ExecCommand>> {
-    vec![all::command(), home::command(), system::command()]
+    vec![
+        all::command(),
+        copy::command(),
+        home::command(),
+        system::command(),
+    ]
 }
 
 fn subcommands() -> Vec<clap::Command> {

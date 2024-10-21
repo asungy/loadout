@@ -6,3 +6,5 @@ edition = "2021"
 [dependencies]
 anyhow = "1.0"
 clap = "4.5"
+home = "0.5.9"
+tempfile = "3.13.0"

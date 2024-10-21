@@ -2,6 +2,7 @@ use crate::core::sway_config::{self, MonitorConfig};
 use std::str::FromStr;
 
 const NAME: &str = "home";
+const MONITOR_GROUP_ID: &str = "monitor_config";
 
 pub fn command() -> Box<dyn super::ExecCommand> {
     struct C;
@@ -24,7 +25,7 @@ pub fn command() -> Box<dyn super::ExecCommand> {
                         .help("Set to use external monitor"),
                 ])
                 .group(
-                    clap::ArgGroup::new("monitor_config")
+                    clap::ArgGroup::new(MONITOR_GROUP_ID)
                         .args(["laptop", "external"])
                         .required(false),
                 )
@@ -34,8 +35,8 @@ pub fn command() -> Box<dyn super::ExecCommand> {
             Box::new(|matches: &clap::ArgMatches| -> anyhow::Result<()> {
                 let monitor_config = MonitorConfig::from_str(
                     matches
-                        .get_one::<clap::Id>("monitor_config")
-                        .unwrap_or(&clap::Id::from(""))
+                        .get_one::<clap::Id>(MONITOR_GROUP_ID)
+                        .unwrap_or(&clap::Id::default())
                         .as_str(),
                 )
                 .ok();
