@@ -202,7 +202,16 @@ in
       #   setSocketVariable = true;
       # };
     };
+
+    # NOTE: This takes a long time to build.
+    virtualbox = {
+      host.enable = true;
+      host.enableExtensionPack = true;
+      guest.enable = true;
+      guest.dragAndDrop = true;
+    };
   };
+  users.extraGroups.vboxusers.members = [ username ];
 
   # HACK: Create file/directories for wgnord (NordVPN)
   system.activationScripts.wgnordTemplateConfig =
