@@ -14,7 +14,6 @@ let
     htop                # Resource viewer
     jq                  # Steroids for JSON
     keepassxc           # Password manager
-    libsForQt5.kdenlive # Video editor
     obsidian            # Note-taking app
     prismlauncher       # Minecraft launcher
     remmina             # RDP Client
