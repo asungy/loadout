@@ -21,8 +21,11 @@ pub fn command() -> Box<dyn crate::cli::ExecCommand> {
                     clap::Arg::new("skyrim")
                         .long("skyrim")
                         .action(clap::ArgAction::SetTrue),
+                    clap::Arg::new("elden_ring")
+                        .long("elden_ring")
+                        .action(clap::ArgAction::SetTrue),
                 ])
-                .group(clap::ArgGroup::new(WALLPAPER_GROUP_ID).args(["musashi", "skyrim"]).required(true))
+                .group(clap::ArgGroup::new(WALLPAPER_GROUP_ID).args(["musashi", "skyrim", "elden_ring"]).required(true))
         }
 
         fn callback(&self) -> crate::cli::CommandFn {

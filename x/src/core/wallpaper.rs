@@ -3,6 +3,7 @@ const WALLPAPER_FILE: &str = ".wallpaper";
 pub enum Wallpaper {
     Musashi,
     Skyrim,
+    EldenRing,
 }
 
 impl std::str::FromStr for Wallpaper {
@@ -12,6 +13,7 @@ impl std::str::FromStr for Wallpaper {
         match s {
             "skyrim" => Ok(Wallpaper::Skyrim),
             "musashi" => Ok(Wallpaper::Musashi),
+            "elden_ring" | "elden-ring" => Ok(Wallpaper::EldenRing),
             _ => Err(anyhow::anyhow!(format!("Unrecognized wallpaper: {s}"))),
         }
     }
@@ -25,6 +27,7 @@ pub fn copy_wallpaper(
     let wallpaper_file = match wallpaper {
         Wallpaper::Musashi => std::path::Path::new(&wallpaper_dir).join("miyamoto-musashi.png"),
         Wallpaper::Skyrim => std::path::Path::new(&wallpaper_dir).join("skyrim.jpg"),
+        Wallpaper::EldenRing => std::path::Path::new(&wallpaper_dir).join("elden_ring.png"),
     };
 
     let output = std::process::Command::new("cp")
