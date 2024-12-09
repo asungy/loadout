@@ -1,103 +1,77 @@
 #![allow(clippy::all, missing_debug_implementations)]
 
-use crossterm::event::{self, Event, KeyCode, KeyEvent, KeyEventKind};
-use ratatui::{
-    buffer::Buffer,
-    layout::Rect,
-    style::Stylize,
-    symbols::border,
-    text::{Line, Text},
-    widgets::{Block, Paragraph, Widget},
-    DefaultTerminal, Frame,
+mod app;
+
+use ratatui::backend::CrosstermBackend;
+use ratatui::crossterm::event::{DisableMouseCapture, EnableMouseCapture};
+use ratatui::crossterm::execute;
+use ratatui::crossterm::terminal::{
+    disable_raw_mode, enable_raw_mode, EnterAlternateScreen, LeaveAlternateScreen,
 };
 
-#[derive(Debug, Default)]
-pub struct App {
-    counter: u8,
-    exit: bool,
-}
+fn run_app<B: ratatui::backend::Backend>(terminal: &mut ratatui::Terminal<B>, app: &mut app::App) -> std::io::Result<bool> {
+    loop {
+        terminal.draw(|f| ui(f, app))?;
 
-impl App {
-    fn run(&mut self, terminal: &mut DefaultTerminal) -> std::io::Result<()> {
-        while !self.exit {
-            terminal.draw(|frame| self.draw(frame))?;
-            self.handle_events()?;
+        if let crossterm::event::Event::Key(key) = crossterm::event::read()? {
+            if key.kind == crossterm::event::KeyEventKind::Release {
+                // Skip events that are not KeyEventKind::Press
+                continue;
+            }
+            match app.current_screen {
+                app::CurrentScreen::Main => match key.code {
+                    crossterm::event::KeyCode::Char('e') => {
+                        app.current_screen = app::CurrentScreen::Editing;
+                        app.currently_editing = Some(app::CurrentlyEditing::Key);
+                    },
+                    crossterm::event::KeyCode::Char('q') => {
+                        app.current_screen = app::CurrentScreen::Exiting;
+                    },
+                    _ => {},
+                },
+                // LEFT OFF: https://ratatui.rs/tutorials/json-editor/main/
+                app::CurrentScreen::Editing => todo!(),
+                app::CurrentScreen::Exiting => match key.code {
+                    crossterm::event::KeyCode::Char('y') => {
+                        return Ok(true)
+                    },
+                    crossterm::event::KeyCode::Char('n') | crossterm::event::KeyCode::Char('q') => {
+                        return Ok(false)
+                    },
+                    _ => {},
+                },
+            }
         }
-        Ok(())
-    }
-
-    fn draw(&self, frame: &mut Frame) {
-        frame.render_widget(self, frame.area());
-    }
-
-    fn handle_events(&mut self) -> std::io::Result<()> {
-        match event::read()? {
-            Event::Key(key_event) if key_event.kind == KeyEventKind::Press => {
-                self.handle_key_event(key_event);
-            },
-            _ => {},
-        }
-
-        Ok(())
-    }
-
-    fn handle_key_event(&mut self, key_event: KeyEvent) {
-        match key_event.code {
-            KeyCode::Char('q') => self.exit(),
-            KeyCode::Left => self.decrement_counter(),
-            KeyCode::Right => self.increment_counter(),
-            _ => {},
-        }
-    }
-
-    fn exit(&mut self) {
-        self.exit = true;
-    }
-
-    fn increment_counter(&mut self) {
-        self.counter += 1;
-    }
-
-    fn decrement_counter(&mut self) {
-        self.counter -= 1;
     }
 }
 
-impl Widget for &App {
-    fn render(self, area: Rect, buf: &mut Buffer)
-    where
-        Self: Sized,
-    {
-        let title = Line::from(" Counter App Tutorial ".bold());
-        let instructions = Line::from(vec![
-            " Decrement ".into(),
-            "<Left>".blue().bold(),
-            " Increment ".into(),
-            "<Right>".blue().bold(),
-            " Quit ".into(),
-            "<Q> ".blue().bold(),
-        ]);
+fn main() -> Result<(), Box<dyn std::error::Error>> {
+    enable_raw_mode()?;
 
-        let block = Block::bordered()
-            .title(title.centered())
-            .title_bottom(instructions.centered())
-            .border_set(border::THICK);
+    let mut stderr = std::io::stderr();
+    execute!(stderr, EnterAlternateScreen, EnableMouseCapture)?;
 
-        let counter_text = Text::from(vec![Line::from(vec![
-            "Value: ".into(),
-            self.counter.to_string().yellow(),
-        ])]);
+    let backend = CrosstermBackend::new(stderr);
+    let mut terminal = ratatui::Terminal::new(backend)?;
 
-        Paragraph::new(counter_text)
-            .centered()
-            .block(block)
-            .render(area, buf);
+    let mut app = app::App::new();
+    let res = run_app(&mut terminal, &mut app);
+
+    disable_raw_mode()?;
+    execute!(
+        terminal.backend_mut(),
+        LeaveAlternateScreen,
+        DisableMouseCapture,
+    )?;
+    terminal.show_cursor()?;
+
+    if let Ok(do_print) = res {
+        if do_print {
+            app.print_json()?;
+        }
+    } else if let Err(err) = res {
+        println!("{err:?}");
     }
-}
 
-fn main() -> std::io::Result<()> {
-    let mut terminal = ratatui::init();
-    let app_result = App::default().run(&mut terminal);
-    ratatui::restore();
-    app_result
+    Ok(())
 }
