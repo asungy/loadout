@@ -12,10 +12,17 @@ pub enum CurrentlyEditing {
 }
 
 pub struct App {
+    // The currently being edited key.
     pub key_input: String,
+    // The currently being edited value.
     pub value_input: String,
+    // The representation of our key and value pairs with serde Serialize support.
     pub pairs: HashMap<String, String>,
+    // The current screen the user is looking at, and will later determine what is rendered.
     pub current_screen: CurrentScreen,
+    // The optional state containing which of the key or value pair the user is editing. It is an
+    // option, because when the user is not directly editing a key-value pair, this will be set to
+    // `None`.
     pub currently_editing: Option<CurrentlyEditing>,
 }
 
