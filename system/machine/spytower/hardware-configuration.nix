@@ -8,22 +8,22 @@
     [ (modulesPath + "/installer/scan/not-detected.nix")
     ];
 
-  boot.initrd.availableKernelModules = [ "nvme" "xhci_pci" "thunderbolt" "usbhid" ];
+  boot.initrd.availableKernelModules = [ "xhci_pci" "ahci" "nvme" "usbhid" ];
   boot.initrd.kernelModules = [ ];
-  boot.kernelModules = [ "kvm-amd" ];
+  boot.kernelModules = [ "kvm-intel" ];
   boot.extraModulePackages = [ ];
 
   fileSystems."/" =
-    { device = "/dev/disk/by-uuid/674ddb12-d65f-4a97-8b86-fe397fc20ea6";
+    { device = "/dev/disk/by-uuid/51e10d79-11d8-44a7-8ddd-61bf31d45078";
       fsType = "ext4";
     };
 
-  boot.initrd.luks.devices."luks-d6bb58c0-5c8f-4014-a0ac-cadd6004d5e0".device = "/dev/disk/by-uuid/d6bb58c0-5c8f-4014-a0ac-cadd6004d5e0";
+  boot.initrd.luks.devices."luks-7706eef6-1d8b-469b-b236-f48df231443d".device = "/dev/disk/by-uuid/7706eef6-1d8b-469b-b236-f48df231443d";
 
   fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/928A-1B9C";
+    { device = "/dev/disk/by-uuid/762E-94AB";
       fsType = "vfat";
-      options = [ "fmask=0022" "dmask=0022" ];
+      options = [ "fmask=0077" "dmask=0077" ];
     };
 
   swapDevices = [ ];
@@ -33,11 +33,12 @@
   # still possible to use this option, but it's recommended to use it in conjunction
   # with explicit per-interface declarations with `networking.interfaces.<interface>.useDHCP`.
   networking.useDHCP = lib.mkDefault true;
-  # networking.interfaces.br-52ff15e0b345.useDHCP = lib.mkDefault true;
   # networking.interfaces.docker0.useDHCP = lib.mkDefault true;
-  # networking.interfaces.veth32f6857.useDHCP = lib.mkDefault true;
+  # networking.interfaces.enp4s0.useDHCP = lib.mkDefault true;
+  # networking.interfaces.enp5s0.useDHCP = lib.mkDefault true;
+  # networking.interfaces.wgnord.useDHCP = lib.mkDefault true;
   # networking.interfaces.wlan0.useDHCP = lib.mkDefault true;
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
-  hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
+  hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 }

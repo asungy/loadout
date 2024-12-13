@@ -1,6 +1,4 @@
 {
-  description = "asungy's Home Manager and NixOS configurations";
-
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
     rust-overlay.url = "github:oxalica/rust-overlay";

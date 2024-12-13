@@ -1,7 +1,5 @@
-use std::process::Command;
-
-pub fn exec() -> anyhow::Result<()> {
-    let output = Command::new("sh")
+pub fn build() -> anyhow::Result<()> {
+    let output = std::process::Command::new("sh")
         .arg("-c")
         .arg("sudo nix build .#homeConfigurations.asungy.activationPackage")
         .output()
@@ -13,7 +11,7 @@ pub fn exec() -> anyhow::Result<()> {
         return Err(anyhow::anyhow!("Error building home manager."));
     }
 
-    let output = Command::new("sh")
+    let output = std::process::Command::new("sh")
         .arg("-c")
         .arg("result/activate")
         .output()

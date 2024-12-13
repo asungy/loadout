@@ -1,13 +1,15 @@
-#![allow(clippy::all, missing_debug_implementations)]
-
-mod cli;
 mod core;
+mod prompt;
 
-use std::process::ExitCode;
+use colored::Colorize;
 
-fn main() -> ExitCode {
-    match cli::exec() {
-        Ok(_) => ExitCode::SUCCESS,
-        Err(_) => ExitCode::FAILURE,
+fn main() -> anyhow::Result<()> {
+    println!("{}", "NixOS configuration manager tool thing".bold());
+
+    let mut next_prompt: Option<prompt::Prompt> = prompt::initial()?;
+    while let Some(ref prompt) = next_prompt {
+        next_prompt = (*prompt.next)()?;
     }
+
+    Ok(())
 }

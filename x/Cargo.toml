@@ -1,10 +1,12 @@
 [package]
 name = "x"
-version = "0.1.0"
+version = "0.2.0"
 edition = "2021"
 
 [dependencies]
 anyhow = "1.0"
 clap = "4.5"
+colored = "2.1.0"
 home = "0.5.9"
+inquire = "0.7.5"
 tempfile = "3.13.0"

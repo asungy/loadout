@@ -20,10 +20,12 @@ set $menu wofi --conf=$HOME/.config/wofi/config
 # Set wallpaper.
 output * bg ~/.wallpaper fill
 
-# Disable primary monitor because monitor mirroring is not supported in Sway.
+# Disable primary (laptop) monitor because monitor mirroring is not supported in Sway.
 #
-# Comment this out when computer is not connected to an external monitor.
-output "eDP-1" disable
+# `swaymsg -t get_outputs`
+#
+# Keep commented to use laptop's primary screen.
+# output "eDP-1" disable
 
 # Set up lock screen.
 exec swayidle -w
