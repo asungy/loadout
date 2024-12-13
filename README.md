@@ -8,8 +8,3 @@ Personal NixOS configuration.
 ```bash
 nix run .#x
 ```
-
-## To-Do
-- Spytower
-  - [ ] Add davinci resolve
-  - [ ] Set up nvidia drivers
