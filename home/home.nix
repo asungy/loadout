@@ -1,4 +1,4 @@
-{ config, lib, pkgs, stdenv, ... } :
+{ pkgs, ... } :
 let
   username = "asungy";
   homeDirectory = "/home/${username}";
@@ -18,6 +18,7 @@ let
     prismlauncher       # Minecraft launcher
     remmina             # RDP Client
     ripgrep             # A better `grep`
+    signal-desktop      # Text messaging
     tldr                # All the manpages
     tree                # File tree viewer
     vlc                 # Video player
