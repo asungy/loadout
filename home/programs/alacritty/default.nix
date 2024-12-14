@@ -36,7 +36,7 @@ let
   };
 
   fontConfig = {
-    size = 10;
+    size = 14;
   };
 in
 {
