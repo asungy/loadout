@@ -4,6 +4,7 @@ pub fn f() -> anyhow::Result<Option<Prompt>> {
     const ELDEN_RING: &str = "Elden Ring";
     const SKYRIM: &str = "Skyrim";
     const MUSASHI: &str = "Musashi Miyamoto";
+    const NIXOS_HONEYCOMBS: &str = "NixOS Honeycombs";
 
     let wallpaper_dir = {
         let dir = std::env::current_dir()?.join("wallpapers");
@@ -14,6 +15,7 @@ pub fn f() -> anyhow::Result<Option<Prompt>> {
         ELDEN_RING,
         SKYRIM,
         MUSASHI,
+        NIXOS_HONEYCOMBS,
     ])
         .with_vim_mode(true)
         .prompt()?
@@ -21,6 +23,7 @@ pub fn f() -> anyhow::Result<Option<Prompt>> {
         ELDEN_RING => std::path::Path::new(&wallpaper_dir).join("elden_ring.png"),
         SKYRIM => std::path::Path::new(&wallpaper_dir).join("skyrim.jpg"),
         MUSASHI => std::path::Path::new(&wallpaper_dir).join("miyamoto-musashi.png"),
+        NIXOS_HONEYCOMBS => std::path::Path::new(&wallpaper_dir).join("nixos_honeycombs.png"),
         _ => unreachable!(),
     };
 
