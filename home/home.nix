@@ -23,6 +23,7 @@ let
     tree                # File tree viewer
     vlc                 # Video player
     zoom-us             # Video conferencing
+    thefuck
   ];
 in
 {
