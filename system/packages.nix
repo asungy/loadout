@@ -23,6 +23,7 @@
     satty                     # Image annotation tool
     ventoy                    # Bootable USB utility
     vesktop                   # Discord client
+    davinci-resolve
   ];
 
   misc = with pkgs; [
