@@ -1,5 +1,5 @@
 # Reference: https://github.com/nix-community/home-manager/blob/master/modules/programs/bash.nix
-{ pkgs, ... } :
+{ ... } :
 let
   shellAliases = {
     archbox = "docker run --network=host -it --rm --name=archbox archlinux:latest /bin/bash";
@@ -13,6 +13,7 @@ let
     cpwd = "pwd | wl-copy";
     ls = "ls --color=tty";
     vim = "nix run github:asungy/xvim";
+    f = "fuck";
   };
 
   sessionVariables = {};
