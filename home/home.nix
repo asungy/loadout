@@ -8,6 +8,7 @@ let
     bat                 # A better `cat`
     brave               # Browser
     cloc                # Line counter
+    dbeaver-bin         # Database client
     devenv              # Nix dev environments
     dropbox             # Cloud filesystem
     ffmpeg              # OP media software
