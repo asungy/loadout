@@ -16,6 +16,7 @@ let
     keepassxc           # Password manager
     obsidian            # Note-taking app
     prismlauncher       # Minecraft launcher
+    rclone              # Cloud client
     remmina             # RDP Client
     ripgrep             # A better `grep`
     signal-desktop      # Text messaging
