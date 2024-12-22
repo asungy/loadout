@@ -12,11 +12,11 @@ in
     ./i18n.nix
     ./networking.nix
     ./nix_daemon.nix
+    ./protonvpn.nix
     ./udev.nix
     ./user.nix
     ./virtualisation.nix
     ./wayland.nix
-    ./wgnord.nix
   ];
 
   environment.systemPackages = []

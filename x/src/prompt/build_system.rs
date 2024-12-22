@@ -73,6 +73,31 @@ fn generate_hardware_file(dest_dir: &std::path::Path, copy_default_config: bool)
 }
 
 pub fn f() -> anyhow::Result<Option<Prompt>> {
+    // Check key file before proceeding.
+    if !crate::core::sops::key_file_exists() {
+        let password = inquire::Password::new("Secrets key file does not exist. Please enter the password to generate the file: ")
+            .with_display_toggle_enabled()
+            .with_display_mode(inquire::PasswordDisplayMode::Hidden)
+            .without_confirmation()
+            .with_help_message("Press <Ctrl-R> to toggle display")
+            .prompt()?;
+
+        match crate::core::sops::generate_key_file(password) {
+            Ok(_) => println!("Secrets key file generated."),
+            Err(e) => {
+                eprintln!("Could not generate secrets key file: {}", e);
+                return Err(anyhow::anyhow!(e));
+            },
+        };
+    }
+
+    // Check secrets file before proceeding.
+    if !crate::core::sops::decrypted_secrets_dir_exists() {
+        assert!(crate::core::sops::key_file_exists());
+        println!("Secrets directory does not exist in home directory. Generating decrypted secrets files.");
+        crate::core::sops::generate_secrets_files()?;
+    }
+
     const FRAMEWORK: &str = "framework";
     const SPYTOWER: &str = "spytower";
     const OTHER: &str = "other";
