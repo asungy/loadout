@@ -1,18 +1,17 @@
-{ pkgs, username, ... } :
+{ username, ... } :
 {
   networking.wg-quick.interfaces = {
-    # test: NL-FREE#162
-    proton-nl = {
+    protonvpn-ny = {
       address = ["10.2.0.2/32"];
       dns = ["10.2.0.1"];
-      privateKeyFile = "/home/${username}/.secrets/protonvpn-nl-private-key";
+      privateKeyFile = "/home/${username}/.secrets/protonvpn-ny-private-key";
       listenPort = 51820;
 
       peers = [
         {
-          publicKey = "aQ8bxW84kPY54cmd75U9rIHzg/mlpV1mJluXdm/6hFI=";
+          publicKey = "LMkFEUVVqWl1di39x+CloLdXXH/X9P/vKXeVXohvqlc=";
           allowedIPs = [ "0.0.0.0/0" "::/0" ];
-          endpoint = "185.107.56.130:51820";
+          endpoint = "146.70.72.162:51820";
         }
       ];
     };

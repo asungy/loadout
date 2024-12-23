@@ -11,4 +11,5 @@ nix-shell -p age --run 'age-keygen -y ~/.config/sops/age/keys.txt'
 ```shell
 nix-shell -p sops --run 'sops secrets/secrets.yaml'
 ```
+
 https://linuxcommandlibrary.com/man/sops

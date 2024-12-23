@@ -99,10 +99,10 @@ pub fn generate_secrets_files() -> anyhow::Result<()> {
     let dir = decrypted_secrets_dir();
     std::fs::create_dir_all(dir)?;
 
-    // Create protonvpn nl private key secret.
+    // Create protonvpn ny private key secret.
     {
-        let mut f = std::fs::File::create(decrypted_secrets_dir().join("protonvpn-nl-private-key"))?;
-        let private_key = yq_get_value(content, ".\"nl-free-162-private-key\"")?;
+        let mut f = std::fs::File::create(decrypted_secrets_dir().join("protonvpn-ny-private-key"))?;
+        let private_key = yq_get_value(content, ".\"protonvpn-ny-private-key\"")?;
         f.write_all(private_key.as_bytes())?;
     }
 
