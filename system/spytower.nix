@@ -19,7 +19,10 @@ in
     ./modules/wayland.nix
   ];
 
-  environment.systemPackages = []
+  environment.systemPackages =
+    (with pkgs;[
+      davinci-resolve
+    ])
     ++ packages.desktop
     ++ packages.apps
     ++ packages.misc
