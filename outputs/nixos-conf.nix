@@ -15,7 +15,7 @@
     inherit pkgs system;
     modules = [
       ../system/machine/spytower
-      ../system
+      ../system/spytower.nix
     ];
     specialArgs = { inherit inputs; username = "asungy"; };
   };
@@ -25,18 +25,21 @@
     inherit pkgs system;
     modules = [
       ../system/machine/framework
-      ../system
+      ../system/framework.nix
     ];
     specialArgs = { inherit inputs; username = "asungy"; };
   };
 
   # Generic output.
-  other = nixosSystem {
-    inherit pkgs system;
-    modules = [
-      ../system/machine/other
-      ../system
-    ];
-    specialArgs = { inherit inputs; username = "asungy"; };
-  };
+  #
+  # TODO implement
+  #
+  # other = nixosSystem {
+  #   inherit pkgs system;
+  #   modules = [
+  #     ../system/machine/other
+  #     ../system
+  #   ];
+  #   specialArgs = { inherit inputs; username = "asungy"; };
+  # };
 }

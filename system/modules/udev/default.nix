@@ -2,7 +2,7 @@
 {
   # Install custom udev configurations.
   services.udev.packages = [
-    (import ./udev/zsa.nix { inherit pkgs; })
+    (import ./zsa.nix { inherit pkgs; })
     pkgs.android-udev-rules
   ];
 }

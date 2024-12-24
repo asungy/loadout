@@ -4,19 +4,19 @@ let
 in
 {
   imports = [
-    ./audio.nix
-    ./environment_vars.nix
-    ./fonts.nix
-    ./gpg.nix
-    ./graphics.nix
-    ./i18n.nix
-    ./networking.nix
-    ./nix_daemon.nix
-    ./protonvpn.nix
-    ./udev.nix
-    ./user.nix
-    ./virtualisation.nix
-    ./wayland.nix
+    ./modules/audio.nix
+    ./modules/environment_vars.nix
+    ./modules/fonts.nix
+    ./modules/gpg.nix
+    ./modules/graphics
+    ./modules/i18n.nix
+    ./modules/networking.nix
+    ./modules/nix_daemon.nix
+    ./modules/protonvpn.nix
+    ./modules/udev
+    ./modules/user.nix
+    ./modules/virtualisation.nix
+    ./modules/wayland.nix
   ];
 
   environment.systemPackages = []
