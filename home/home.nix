@@ -4,26 +4,27 @@ let
   homeDirectory = "/home/${username}";
 
   defaultPkgs = with pkgs; [
-    anki                # Spaced repetition flashcards
-    bat                 # A better `cat`
-    brave               # Browser
-    cloc                # Line counter
-    devenv              # Nix dev environments
-    dropbox             # Cloud filesystem
-    ffmpeg              # OP media software
-    htop                # Resource viewer
-    jq                  # Steroids for JSON
-    keepassxc           # Password manager
-    obsidian            # Note-taking app
-    prismlauncher       # Minecraft launcher
-    rclone              # Cloud client
-    remmina             # RDP Client
-    ripgrep             # A better `grep`
-    signal-desktop      # Text messaging
-    tldr                # All the manpages
-    tree                # File tree viewer
-    vlc                 # Video player
-    zoom-us             # Video conferencing
+    anki           # Spaced repetition flashcards
+    bat            # A better `cat`
+    brave          # Browser
+    cloc           # Line counter
+    devenv         # Nix dev environments
+    dropbox        # Cloud filesystem
+    eza            # A better `ls`
+    ffmpeg         # OP media software
+    htop           # Resource viewer
+    jq             # Steroids for JSON
+    keepassxc      # Password manager
+    obsidian       # Note-taking app
+    prismlauncher  # Minecraft launcher
+    rclone         # Cloud client
+    remmina        # RDP Client
+    ripgrep        # A better `grep`
+    signal-desktop # Text messaging
+    tldr           # All the manpages
+    tree           # File tree viewer
+    vlc            # Video player
+    zoom-us        # Video conferencing
   ];
 in
 {

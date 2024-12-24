@@ -2,18 +2,11 @@
 { ... } :
 let
   shellAliases = {
-    archbox = "docker run --network=host -it --rm --name=archbox archlinux:latest /bin/bash";
-    archbox-mnt = (
-      "docker run --network=host -it --rm " +
-      "--name=archbox-mnt " +
-      "--workdir=/mnt/\"\$\{PWD##*/}\" " +
-      "--volume=\"\$(pwd)\":/mnt/\"\$\{PWD##*/}\" " +
-      "archlinux:latest /bin/bash"
-    );
     cpwd = "pwd | wl-copy";
-    ls = "ls --color=tty";
-    vim = "nix run github:asungy/xvim";
     f = "fuck";
+    l = "eza";
+    sway = "sway --unsupported-gpu";
+    vim = "nix run github:asungy/xvim";
   };
 
   sessionVariables = {};
