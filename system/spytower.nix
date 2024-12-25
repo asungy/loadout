@@ -8,7 +8,7 @@ in
     ./modules/environment_vars.nix
     ./modules/fonts.nix
     ./modules/gpg.nix
-    ./modules/graphics/geforce-980-ti.nix
+    ./modules/graphics/default.nix
     ./modules/i18n.nix
     ./modules/networking.nix
     ./modules/nix_daemon.nix
