@@ -40,6 +40,7 @@ in
       PermitRootLogin = "no";
     };
   };
+  networking.firewall.allowedTCPPorts = [ 22 ];
 
   # NOTE - this takes a long time to build.
   # virtualisation.virtualbox = {
