@@ -1,17 +1,17 @@
 { username, ... } :
 {
   networking.wg-quick.interfaces = {
-    protonvpn-ny = {
+    protonvpn-default = {
       address = ["10.2.0.2/32"];
       dns = ["10.2.0.1"];
-      privateKeyFile = "/home/${username}/.secrets/protonvpn-ny-private-key";
+      privateKeyFile = "/home/${username}/.secrets/protonvpn-default-private-key";
       listenPort = 51820;
 
       peers = [
         {
-          publicKey = "LMkFEUVVqWl1di39x+CloLdXXH/X9P/vKXeVXohvqlc=";
+          publicKey = "umCaW98SBPbNjApBKCo0ReYhT2AJ0QfV/ZlyWnWmVUk=";
           allowedIPs = [ "0.0.0.0/0" "::/0" ];
-          endpoint = "146.70.72.162:51820";
+          endpoint = "149.102.226.225:51820";
         }
       ];
     };
