@@ -28,12 +28,13 @@ in
     ++ packages.misc
     ;
 
-  virtualisation.virtualbox = {
-    host.enable = true;
-    host.enableExtensionPack = true;
-    guest.enable = true;
-    guest.dragAndDrop = true;
-  };
+  # NOTE - this takes a long time to build.
+  # virtualisation.virtualbox = {
+  #   host.enable = true;
+  #   host.enableExtensionPack = true;
+  #   guest.enable = true;
+  #   guest.dragAndDrop = true;
+  # };
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
