@@ -1,7 +1,7 @@
 { username, ... } :
 {
   networking.wg-quick.interfaces = {
-    protonvpn-default = {
+    wg0 = {
       address = ["10.2.0.2/32"];
       dns = ["10.2.0.1"];
       privateKeyFile = "/home/${username}/.secrets/protonvpn-default-private-key";
