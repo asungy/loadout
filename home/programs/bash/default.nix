@@ -6,7 +6,7 @@ let
     f = "fuck";
     l = "eza";
     sway = "sway --unsupported-gpu";
-    vim = "nix run github:asungy/xvim";
+    xv = "nix run github:asungy/xvim";
   };
 
   sessionVariables = {};
