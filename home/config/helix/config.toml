@@ -1,1 +1,7 @@
 theme = "tokyonight"
+
+# Save on ESC.
+[keys.normal]
+"esc" = ["collapse_selection", ":w"]
+"esc" = ["collapse_selection", "normal_mode", ":w"]
+"esc" = ["normal_mode", ":w"]
