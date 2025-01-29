@@ -11,7 +11,7 @@ set $alt Mod1
 set $win Mod4
 
 # Terminal emulator.
-set $term alacritty
+set $term ghostty
 
 # Application launcher
 # set $menu dmenu_path | wmenu | xargs swaymsg exec --

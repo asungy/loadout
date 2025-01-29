@@ -12,6 +12,8 @@ let
     dropbox        # Cloud filesystem
     eza            # A better `ls`
     ffmpeg         # OP media software
+    ghostty        # Terminal emulator
+    helix          # Post-modern modal editor
     htop           # Resource viewer
     jq             # Steroids for JSON
     keepassxc      # Password manager
@@ -24,6 +26,7 @@ let
     tldr           # All the manpages
     tree           # File tree viewer
     vlc            # Video player
+    zellij         # Terminal workspace
     zoom-us        # Video conferencing
   ];
 in

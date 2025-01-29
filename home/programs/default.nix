@@ -1,9 +1,7 @@
 [
-  ./alacritty
   ./bash
   ./fzf
   ./git
   ./starship
   ./thefuck
-  ./tmux
 ]
