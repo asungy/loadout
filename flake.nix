@@ -4,7 +4,7 @@
     rust-overlay.url = "github:oxalica/rust-overlay";
 
     home-manager = {
-      url = "github:nix-community/home-manager/21b078306a2ab68748abf72650db313d646cf2ca";
+      url = "github:nix-community/home-manager/master";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
