@@ -38,7 +38,7 @@ in
     inherit username;
     inherit homeDirectory;
 
-    packages = defaultPkgs;
+    packages = defaultPkgs ++ (with pkgs; [ghostty zellij helix]);
 
     stateVersion = "23.05";
 
