@@ -20,6 +20,7 @@ pub fn build() -> anyhow::Result<()> {
         println!("{}", std::str::from_utf8(&output.stdout).unwrap());
         println!("Home manager successfully activated.");
     } else {
+        println!("{}", std::str::from_utf8(&output.stdout).unwrap());
         eprintln!("{}", std::str::from_utf8(&output.stderr).unwrap());
         return Err(anyhow::anyhow!("Error activating home manager."));
     }

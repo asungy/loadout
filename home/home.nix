@@ -59,6 +59,15 @@ in
 
       # i3
       ".config/i3/config".source = ./config/i3/config;
+
+      # Ghostty
+      ".config/ghostty/config".source = ./config/ghostty/config;
+
+      # Zellij
+      ".config/zellij/config.kdl".source = ./config/zellij/config.kdl;
+
+      # Helix
+      ".config/helix/config.toml".source = ./config/helix/config.toml;
     };
   };
 }

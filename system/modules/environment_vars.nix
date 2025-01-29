@@ -6,7 +6,7 @@
     XMODIFIERS = "@im=ibus";
 
     # Set default editor.
-    EDITOR = "nvim";
-    VISUAL = "nvim";
+    EDITOR = "hx";
+    VISUAL = "hx";
   };
 }
