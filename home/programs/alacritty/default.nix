@@ -45,7 +45,7 @@ in
     settings = {
       colors = colorTheme;
       font = fontConfig;
-      shell.program = "${pkgs.tmux}/bin/tmux";
+      terminal.shell.program = "${pkgs.tmux}/bin/tmux";
       window.decorations = "none"; # Hide title bar
       window.opacity = 0.85;
     };
