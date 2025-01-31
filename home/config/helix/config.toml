@@ -1,8 +1,9 @@
 theme = "tokyonight"
 
-# Save on ESC.
 [keys.normal]
 "esc" = ["collapse_selection", ":w"]
+"home" = ["goto_file_start"]
+"end" = ["goto_file_end"]
 
 [keys.select]
 "esc" = ["collapse_selection", "normal_mode", ":w"]
