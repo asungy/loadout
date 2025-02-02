@@ -7,6 +7,8 @@ theme = "tokyonight"
 
 [keys.select]
 "esc" = ["collapse_selection", "normal_mode", ":w"]
+"home" = ["goto_file_start"]
+"end" = ["goto_file_end"]
 
 [keys.insert]
 "esc" = ["normal_mode", ":w"]
