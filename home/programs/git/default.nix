@@ -3,7 +3,7 @@
 let
   gitConfig = {
     core = {
-      editor = "nvim";
+      editor = "hx";
     };
     init.defaultBranch = "main";
   };

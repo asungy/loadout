@@ -17,6 +17,7 @@
   # Applications.
   apps = with pkgs; [
     grimblast                 # Screenshot utility
+    helix                     # Text editor
     obs-studio                # Screen recorder
     obs-studio-plugins.wlrobs # OBS wayland plugin
     satty                     # Image annotation tool

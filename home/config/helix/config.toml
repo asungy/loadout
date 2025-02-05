@@ -1,14 +1,15 @@
 theme = "tokyonight"
 
+[editor.auto-save]
+"focus-lost" = true
+"after-delay.enable" = true
+"after-delay.timeout" = 2000
+
 [keys.normal]
 "esc" = ["collapse_selection", ":w"]
 "home" = ["goto_file_start"]
 "end" = ["goto_file_end"]
 
 [keys.select]
-"esc" = ["collapse_selection", "normal_mode", ":w"]
 "home" = ["goto_file_start"]
 "end" = ["goto_file_end"]
-
-[keys.insert]
-"esc" = ["normal_mode", ":w"]
