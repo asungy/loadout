@@ -9,14 +9,13 @@ let
     brave          # Browser
     cloc           # Line counter
     devenv         # Nix dev environments
-    dropbox        # Cloud filesystem
     eza            # A better `ls`
     ffmpeg         # OP media software
     htop           # Resource viewer
-    jq             # Steroids for JSON
+    jq             # JSON utility
     keepassxc      # Password manager
+    krita          # Raster graphics editor
     obsidian       # Note-taking app
-    prismlauncher  # Minecraft launcher
     rclone         # Cloud client
     remmina        # RDP Client
     ripgrep        # A better `grep`
