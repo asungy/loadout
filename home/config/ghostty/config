@@ -1,4 +1,4 @@
 background-opacity = 0.85
-command = zellij
+# command = zellij
 theme = tokyonight
 window-decoration = false
