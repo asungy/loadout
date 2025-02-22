@@ -2,3 +2,5 @@ background-opacity = 0.85
 # command = zellij
 theme = tokyonight
 window-decoration = false
+clipboard-read = allow
+clipboard-write = allow
