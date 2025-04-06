@@ -50,9 +50,6 @@ bindsym $win+l exec 'bash $HOME/.config/swaylock.sh'
 # Start browser.
 bindsym $win+b exec brave
 
-# Start password manager.
-bindsym $win+k exec keepassxc
-
 # Screenshot to clipboard.
 bindsym $win+g exec 'grimblast copy area'
 
