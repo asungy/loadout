@@ -51,7 +51,7 @@ bindsym $win+l exec 'bash $HOME/.config/swaylock.sh'
 bindsym $win+b exec brave
 
 # Screenshot to clipboard.
-bindsym $win+g exec 'grimblast copy area'
+bindsym $win+g exec 'flameshot launcher'
 
 # Make the current focus fullscreen
 bindsym $win+f fullscreen
