@@ -9,6 +9,7 @@ let
     brave          # Browser
     cloc           # Line counter
     devenv         # Nix dev environments
+    emojify        # Emoji alias substitution
     eza            # A better `ls`
     ffmpeg         # OP media software
     htop           # Resource viewer
