@@ -12,7 +12,7 @@ in
     ./modules/i18n.nix
     ./modules/networking.nix
     ./modules/nix_daemon.nix
-    ./modules/protonvpn.nix
+    # ./modules/protonvpn.nix
     ./modules/tablet.nix
     ./modules/udev
     ./modules/user.nix
