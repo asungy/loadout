@@ -1,5 +1,8 @@
 theme = "tokyonight"
 
+[editor.soft-wrap]
+enable = true
+
 [keys.normal]
 "esc" = ["collapse_selection", ":w"]
 "home" = ["goto_file_start"]
