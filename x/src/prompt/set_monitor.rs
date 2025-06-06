@@ -28,5 +28,14 @@ pub fn f() -> anyhow::Result<Option<Prompt>> {
 
     file.write(new_contents.as_bytes())?;
 
+    match inquire::Confirm::new("Would you like to run home manager now?")
+        .with_default(false)
+        .prompt()
+    {
+        Ok(true) => crate::core::home_manager::build()?,
+        Ok(false) => {}
+        _ => unreachable!(),
+    };
+
     Ok(None)
 }

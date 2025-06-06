@@ -1,9 +1,9 @@
-use std::path::PathBuf;
 use crate::prompt::Prompt;
+use aes_gcm::aead::{Aead, KeyInit, OsRng};
+use aes_gcm::{AeadCore, Aes256Gcm, Key};
 use sha2::Digest;
-use aes_gcm::{Aes256Gcm, Key, Nonce, AeadCore};
-use aes_gcm::aead::{KeyInit, OsRng, Aead};
 use std::io::Write;
+use std::path::PathBuf;
 
 pub fn get_ciphertext_filename() -> anyhow::Result<PathBuf> {
     Ok(std::env::current_dir()?.join("secrets/sops_key"))
@@ -22,12 +22,7 @@ pub fn f() -> anyhow::Result<Option<Prompt>> {
         let target = tempdir.path().join("key.txt");
         let age_command = format!("age-keygen -o {}", target.to_string_lossy());
         let output = std::process::Command::new("nix-shell")
-            .args([
-                "-p",
-                "age",
-                "--run",
-                age_command.as_str(),
-            ])
+            .args(["-p", "age", "--run", age_command.as_str()])
             .output()
             .unwrap();
         if output.status.success() {
@@ -62,7 +57,8 @@ pub fn f() -> anyhow::Result<Option<Prompt>> {
 
     let cipher = Aes256Gcm::new(&key);
     let nonce = Aes256Gcm::generate_nonce(&mut OsRng);
-    let ciphertext = cipher.encrypt(&nonce, new_sops_plaintext.as_bytes())
+    let ciphertext = cipher
+        .encrypt(&nonce, new_sops_plaintext.as_bytes())
         .expect("Error generating ciphertext");
 
     // Generate ciphertext file.
