@@ -21,5 +21,13 @@
       import ./outputs/nixos-conf.nix { inherit inputs system; };
 
     packages.${system}.x = import ./x { inherit inputs system; };
+
+    devShells.${system}.default = (
+      let
+        overlays = [(import inputs.rust-overlay)];
+        pkgs = import inputs.nixpkgs { inherit system overlays; };
+      in
+      pkgs.callPackage ./devShell.nix {}
+    );
   };
 }
