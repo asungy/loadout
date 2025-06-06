@@ -4,6 +4,5 @@
   ./fzf
   ./git
   ./starship
-  ./thefuck
   ./tmux
 ]
