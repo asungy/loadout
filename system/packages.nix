@@ -21,7 +21,7 @@
     obs-studio                # Screen recorder
     obs-studio-plugins.wlrobs # OBS wayland plugin
     satty                     # Image annotation tool
-    # ventoy                  # Bootable USB utility; labeled as insecure (2025-06-06)
+    ventoy                    # Bootable USB utility; labeled as insecure (2025-06-06)
     vesktop                   # Discord client
   ];
 
