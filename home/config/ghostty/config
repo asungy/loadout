@@ -1,5 +1,5 @@
 background-opacity = 0.85
-# command = zellij
+command = TERM=xterm-256color /usr/bin/env bash
 theme = tokyonight
 window-decoration = false
 clipboard-read = allow
