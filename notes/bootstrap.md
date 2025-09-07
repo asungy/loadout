@@ -50,12 +50,12 @@ Do the following before running the `x` script:
 - [ ] If any of this is confusing, don't proceed until you understand what you
   are doing (or proceed and learn from the mess that will ensue).
 
-### Running the `x` script.
-After the above items have be completed, the `x` script can be run with the following command:
+### Running the `x` program.
+After the above items have be completed, the `x` program can be run with the following command:
 ```bash
-./x fresh
+nix run .#x
 ```
-This will apply the system configurations as well as set up [Home
+This will allow you to apply the system configurations as well as set up [Home
 Manager][home_manager_wiki] for the targeted user.
 
 ### Restart
