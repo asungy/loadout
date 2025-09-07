@@ -1,6 +1,9 @@
 use crate::prompt::Prompt;
 
-fn generate_hardware_file(dest_dir: &std::path::Path, copy_default_config: bool) -> anyhow::Result<()> {
+fn generate_hardware_file(
+    dest_dir: &std::path::Path,
+    copy_default_config: bool,
+) -> anyhow::Result<()> {
     let tempdir = tempfile::Builder::new()
         .prefix("nixos-generate-hardware")
         .tempdir()?;
@@ -21,7 +24,9 @@ fn generate_hardware_file(dest_dir: &std::path::Path, copy_default_config: bool)
             Ok(())
         } else {
             eprintln!("{}", std::str::from_utf8(&output.stderr).unwrap());
-            Err(anyhow::anyhow!("Error occurred generating new nixos configuration files."))
+            Err(anyhow::anyhow!(
+                "Error occurred generating new nixos configuration files."
+            ))
         }
     }(&tempdir.path())?;
 
@@ -30,10 +35,7 @@ fn generate_hardware_file(dest_dir: &std::path::Path, copy_default_config: bool)
     |source: &std::path::Path| -> anyhow::Result<()> {
         let dest = dest_dir.join("hardware-configuration.nix");
         let output = std::process::Command::new("cp")
-            .args([
-                source.to_str().unwrap(),
-                dest.to_str().unwrap(),
-            ])
+            .args([source.to_str().unwrap(), dest.to_str().unwrap()])
             .output()?;
 
         if output.status.success() {
@@ -42,7 +44,9 @@ fn generate_hardware_file(dest_dir: &std::path::Path, copy_default_config: bool)
             Ok(())
         } else {
             eprintln!("{}", std::str::from_utf8(&output.stderr).unwrap());
-            Err(anyhow::anyhow!("Error copying hardware configuration file."))
+            Err(anyhow::anyhow!(
+                "Error copying hardware configuration file."
+            ))
         }
     }(&source)?;
 
@@ -52,10 +56,7 @@ fn generate_hardware_file(dest_dir: &std::path::Path, copy_default_config: bool)
         |source: &std::path::Path| -> anyhow::Result<()> {
             let dest = dest_dir.join("default.nix");
             let output = std::process::Command::new("cp")
-                .args([
-                    source.to_str().unwrap(),
-                    dest.to_str().unwrap(),
-                ])
+                .args([source.to_str().unwrap(), dest.to_str().unwrap()])
                 .output()?;
 
             if output.status.success() {
@@ -75,19 +76,21 @@ fn generate_hardware_file(dest_dir: &std::path::Path, copy_default_config: bool)
 pub fn f() -> anyhow::Result<Option<Prompt>> {
     // Check key file before proceeding.
     if !crate::core::sops::key_file_exists() {
-        let password = inquire::Password::new("Secrets key file does not exist. Please enter the password to generate the file: ")
-            .with_display_toggle_enabled()
-            .with_display_mode(inquire::PasswordDisplayMode::Hidden)
-            .without_confirmation()
-            .with_help_message("Press <Ctrl-R> to toggle display")
-            .prompt()?;
+        let password = inquire::Password::new(
+            "Secrets key file does not exist. Please enter the password to generate the file: ",
+        )
+        .with_display_toggle_enabled()
+        .with_display_mode(inquire::PasswordDisplayMode::Hidden)
+        .without_confirmation()
+        .with_help_message("Press <Ctrl-R> to toggle display")
+        .prompt()?;
 
         match crate::core::sops::generate_key_file(password) {
             Ok(_) => println!("Secrets key file generated."),
             Err(e) => {
                 eprintln!("Could not generate secrets key file: {}", e);
                 return Err(anyhow::anyhow!(e));
-            },
+            }
         };
     }
 
@@ -100,49 +103,33 @@ pub fn f() -> anyhow::Result<Option<Prompt>> {
 
     const FRAMEWORK: &str = "framework";
     const SPYTOWER: &str = "spytower";
-    const OTHER: &str = "other";
+    const VIRTUALBOX: &str = "virtualbox";
     let flake_output = match inquire::Select::new(
         "Which machine would you like to build?",
-        vec![FRAMEWORK, SPYTOWER, OTHER],
+        vec![FRAMEWORK, SPYTOWER, VIRTUALBOX],
     )
-        .with_vim_mode(true)
-        .prompt()?
+    .with_vim_mode(true)
+    .prompt()?
     {
         FRAMEWORK => FRAMEWORK,
         SPYTOWER => SPYTOWER,
-        OTHER => {
-
-            let generate_default_config = inquire::Confirm::new(
-                "A hardware configuration file will be generated. Do you also want to generate the default system configuration file?"
-            )
-                .with_default(true)
-                .prompt()?;
-
-            generate_hardware_file(
-                &std::env::current_dir()?.join("system/machine/other"),
-                generate_default_config,
-            )?;
-
-            OTHER
-        },
+        VIRTUALBOX => VIRTUALBOX,
         _ => unreachable!(),
     };
 
     const SWITCH: &str = "switch";
     const TEST: &str = "boot";
     const BOOT: &str = "test";
-    let build_option = match inquire::Select::new(
-        "Select a build option:",
-        vec![SWITCH, TEST, BOOT],
-    )
-        .with_vim_mode(true)
-        .prompt()?
-    {
-        SWITCH => SWITCH,
-        TEST => TEST,
-        BOOT => BOOT,
-        _ => unreachable!(),
-    };
+    let build_option =
+        match inquire::Select::new("Select a build option:", vec![SWITCH, TEST, BOOT])
+            .with_vim_mode(true)
+            .prompt()?
+        {
+            SWITCH => SWITCH,
+            TEST => TEST,
+            BOOT => BOOT,
+            _ => unreachable!(),
+        };
 
     let command = format!(
         "sudo nixos-rebuild {subcommand} --upgrade --flake .#{output}",
@@ -151,7 +138,11 @@ pub fn f() -> anyhow::Result<Option<Prompt>> {
     );
 
     println!("Running: {}", command);
-    let output = std::process::Command::new("sh").arg("-c").arg(command).output().unwrap();
+    let output = std::process::Command::new("sh")
+        .arg("-c")
+        .arg(command)
+        .output()
+        .unwrap();
     if output.status.success() {
         println!("{}", std::str::from_utf8(&output.stdout).unwrap());
     } else {

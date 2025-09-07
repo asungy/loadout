@@ -31,16 +31,13 @@
     specialArgs = { inherit inputs; username = "asungy"; };
   };
 
-  # Generic output.
-  #
-  # TODO implement
-  #
-  # other = nixosSystem {
-  #   inherit pkgs system;
-  #   modules = [
-  #     ../system/machine/other
-  #     ../system
-  #   ];
-  #   specialArgs = { inherit inputs; username = "asungy"; };
-  # };
+  # VirtualBox output.
+  virtualbox = nixosSystem {
+    inherit pkgs system;
+    modules = [
+      ../system/machine/virtualbox
+      ../system/virtualbox.nix
+    ];
+    specialArgs = { inherit inputs; username = "asungy"; };
+  };
 }
