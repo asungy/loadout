@@ -4,10 +4,20 @@ let
 in
 {
   imports = [
+    ./modules/audio.nix
+    ./modules/environment_vars.nix
+    ./modules/fonts.nix
+    ./modules/graphics/default.nix
+    ./modules/i18n.nix
+    ./modules/nix_daemon.nix
     ./modules/user.nix
+    ./modules/wayland.nix
   ];
 
-  environment.systemPackages = [ pkgs.cowsay ];
+  environment.systemPackages = packages.desktop
+    ++ packages.apps
+    ++ packages.misc
+    ;
 
   # Reference: https://nixos.wiki/wiki/SSH
   services.openssh = {
