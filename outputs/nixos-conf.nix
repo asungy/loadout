@@ -31,12 +31,12 @@
     specialArgs = { inherit inputs; username = "asungy"; };
   };
 
-  # VirtualBox output.
-  virtualbox = nixosSystem {
+  # KVM output.
+  kvm = nixosSystem {
     inherit pkgs system;
     modules = [
-      ../system/machine/virtualbox
-      ../system/virtualbox.nix
+      ../system/machine/kvm
+      ../system/kvm.nix
     ];
     specialArgs = { inherit inputs; username = "asungy"; };
   };

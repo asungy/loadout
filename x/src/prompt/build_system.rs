@@ -103,17 +103,17 @@ pub fn f() -> anyhow::Result<Option<Prompt>> {
 
     const FRAMEWORK: &str = "framework";
     const SPYTOWER: &str = "spytower";
-    const VIRTUALBOX: &str = "virtualbox";
+    const KVM: &str = "kvm";
     let flake_output = match inquire::Select::new(
         "Which machine would you like to build?",
-        vec![FRAMEWORK, SPYTOWER, VIRTUALBOX],
+        vec![FRAMEWORK, SPYTOWER, KVM],
     )
     .with_vim_mode(true)
     .prompt()?
     {
         FRAMEWORK => FRAMEWORK,
         SPYTOWER => SPYTOWER,
-        VIRTUALBOX => VIRTUALBOX,
+        KVM => KVM,
         _ => unreachable!(),
     };
 
