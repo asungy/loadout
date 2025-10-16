@@ -39,14 +39,6 @@ in
   };
   networking.firewall.allowedTCPPorts = [ 22 ];
 
-  # NOTE - this takes a long time to build.
-  # virtualisation.virtualbox = {
-  #   host.enable = true;
-  #   host.enableExtensionPack = true;
-  #   guest.enable = true;
-  #   guest.dragAndDrop = true;
-  # };
-
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
   # on your system were taken. It‘s perfectly fine and recommended to leave

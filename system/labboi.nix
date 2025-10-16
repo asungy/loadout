@@ -12,6 +12,7 @@ in
     ./modules/nix_daemon.nix
     ./modules/user.nix
     ./modules/wayland.nix
+    ./modules/networking.nix
   ];
 
   environment.systemPackages = packages.desktop

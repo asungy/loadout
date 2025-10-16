@@ -40,4 +40,14 @@
     ];
     specialArgs = { inherit inputs; username = "asungy"; };
   };
+
+  # Home lab output.
+  labboi = nixosSystem {
+    inherit pkgs system;
+    modules = [
+      ../system/machine/labboi
+      ../system/labboi.nix
+    ];
+    specialArgs = { inherit inputs; username = "asungy"; };
+  };
 }
