@@ -46,7 +46,7 @@
     inherit pkgs system;
     modules = [
       ../system/machine/labboi
-      ../system/labboi.nix
+      ../system/labboi
     ];
     specialArgs = { inherit inputs; username = "asungy"; };
   };
