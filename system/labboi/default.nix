@@ -12,6 +12,7 @@ in
     ../modules/networking.nix
     ../modules/nix_daemon.nix
     ../modules/wayland.nix
+    ../modules/virtualisation.nix
     ./sshd.nix
     ./user.nix
     ./duckdns.nix
