@@ -47,27 +47,24 @@ in
   # Update dynamic DNS service.
   systemd.services.duckdns =
   let
-    # TODO: Move this to SOPS
+    # FIXME: Move this to SOPS. This is not pure.
+    #
+    # Example JSON at /etc/nixos/duckdns.json:
+    # {
+    #  "domain": "<domain>",
+    #  "token": "<token>"
+    # }
     duckdnsSecrets = builtins.fromJSON (builtins.readFile /etc/nixos/duckdns.json);
   in
   {
     description = "Update DuckDNS";
-    serviceConfig = {
-      Type = "simple";
-      ExecStart = ''
-        ${pkgs.curl}/bin/curl "https://www.duckdns.org/update?domains=${duckdnsSecrets.domain}&token=${duckdnsSecrets.token}&ip="
-      '';
-    };
+    serviceConfig.User = "labboi";
+    script = ''
+      ${pkgs.curl}/bin/curl "https://www.duckdns.org/update?domains=${duckdnsSecrets.domain}&token=${duckdnsSecrets.token}&ip="
+    '';
+    startAt = "hourly";
   };
-  systemd.timers.duckdns = {
-    description = "Periodic update of DuckDNS IP";
-    timerConfig = {
-      OnBootSec = "5min";
-      OnUnitActiveSec = "5min";
-    };
-    wantedBy = [ "timers.target" ];
-    unit = "duckdns.service";
-  };
+  systemd.timers.duckdns.timerConfig.RandomizedDelaySec = "15m";
 
   # This option defines the first version of NixOS you have installed on this particular machine,
   # and is used to maintain compatibility with application data (e.g. databases) created on older NixOS versions.

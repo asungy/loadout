@@ -134,8 +134,9 @@ pub fn f() -> anyhow::Result<Option<Prompt>> {
             _ => unreachable!(),
         };
 
+    // FIXME: Remove impure flag after figuring out sops.
     let command = format!(
-        "sudo nixos-rebuild {subcommand} --upgrade --flake .#{output}",
+        "sudo nixos-rebuild {subcommand} --upgrade --impure --flake .#{output}",
         subcommand = build_option,
         output = flake_output,
     );
