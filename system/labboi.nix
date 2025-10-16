@@ -59,8 +59,11 @@ in
   {
     description = "Update DuckDNS";
     serviceConfig.User = "labboi";
+    path = [
+      pkgs.curl
+    ];
     script = ''
-      ${pkgs.curl}/bin/curl "https://www.duckdns.org/update?domains=${duckdnsSecrets.domain}&token=${duckdnsSecrets.token}&ip="
+      curl "https://www.duckdns.org/update?domains=${duckdnsSecrets.domain}&token=${duckdnsSecrets.token}&ip="
     '';
     startAt = "hourly";
   };
