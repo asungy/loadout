@@ -25,14 +25,49 @@ in
     enable = true;
     ports = [ 22 ];
     settings = {
-      PasswordAuthentication = true;
-      AllowUsers = null;
+      PasswordAuthentication = false;
+      AllowUsers = ["termux"];
       UseDns = true;
       X11Forwarding = false;
       PermitRootLogin = "no";
     };
   };
   networking.firewall.allowedTCPPorts = [ 22 ];
+
+  # Added Termux user.
+  users.users.termux = {
+    isNormalUser = true;
+    extraGroups = ["docker" "networkmanager" "wheel"];
+    shell = pkgs.bash;
+    openssh.authorizedKeys.keys = [
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOSAEaZXnJmHWh5s6FT+XIPCS2qC+XDsjH6ECDrKfxD1 u0_a317@localhost"
+    ];
+  };
+
+  # Update dynamic DNS service.
+  systemd.services.duckdns =
+  let
+    # TODO: Move this to SOPS
+    duckdnsSecrets = builtins.fromJSON (builtins.readFile /etc/nixos/duckdns.json);
+  in
+  {
+    description = "Update DuckDNS";
+    serviceConfig = {
+      Type = "simple";
+      ExecStart = ''
+        ${pkgs.curl}/bin/curl "https://www.duckdns.org/update?domains=${duckdnsSecrets.domain}&token=${duckdnsSecrets.token}&ip="
+      '';
+    };
+  };
+  systemd.timers.duckdns = {
+    description = "Periodic update of DuckDNS IP";
+    timerConfig = {
+      OnBootSec = "5min";
+      OnUnitActiveSec = "5min";
+    };
+    wantedBy = [ "timers.target" ];
+    unit = "duckdns.service";
+  };
 
   # This option defines the first version of NixOS you have installed on this particular machine,
   # and is used to maintain compatibility with application data (e.g. databases) created on older NixOS versions.
