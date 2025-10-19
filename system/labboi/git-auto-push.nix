@@ -30,9 +30,9 @@ in
   systemd.timers.${name} = {
     wantedBy = [ "timers.target" ];
     timerConfig = {
-      OnCalendar = "03:00"; # 3 AM daily
+      # OnCalendar = "03:00"; # 3 AM daily
+      OnCalendar = "0/2:00:00"; # Every two hours
       Persistent = true;
-      Unti = "${name}.service";
     };
   };
 }
