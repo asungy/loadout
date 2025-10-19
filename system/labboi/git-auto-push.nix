@@ -4,7 +4,7 @@ let
 in
 {
   systemd.services.${name} = {
-    description = "Automatically commit and push changes to GitHub";
+    description = "Automatically commit and push changes from gambit";
     serviceConfig = {
       Type = "oneshot";
       User = "asungy";
@@ -19,7 +19,7 @@ in
         if ! git diff --quiet || ! git diff --cached --quiet; then
           git add -A &&
           git commit -m "Auto-commit on $(date)" &&
-          git push origin main
+          git push origin dev
         else
           echo "No changes to commit."
         fi
