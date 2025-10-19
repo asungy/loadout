@@ -16,6 +16,7 @@ in
     ./sshd.nix
     ./user.nix
     ./duckdns.nix
+    ./git-auto-push.nix
   ];
 
   environment.systemPackages = packages.desktop
