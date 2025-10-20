@@ -13,6 +13,7 @@ in
     path = [
       pkgs.bash
       pkgs.git
+      pkgs.openssh
     ];
     script = ''
       bash -c '
