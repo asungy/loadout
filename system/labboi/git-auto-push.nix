@@ -32,7 +32,7 @@ in
     wantedBy = [ "timers.target" ];
     timerConfig = {
       # OnCalendar = "03:00"; # 3 AM daily
-      OnCalendar = "0/2:00:00"; # Every two hours
+      OnCalendar = "0/6:00:00"; # Every two hours
       Persistent = true;
     };
   };
