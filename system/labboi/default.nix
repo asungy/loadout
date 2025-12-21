@@ -15,7 +15,7 @@ in
     ../modules/virtualisation.nix
     ./sshd.nix
     ./user.nix
-    ./duckdns.nix
+    # ./duckdns.nix
     ./git-auto-push.nix
   ];
 

@@ -1,6 +1,6 @@
 background-opacity = 0.85
 command = TERM=xterm-256color /usr/bin/env bash
-theme = tokyonight
+theme = TokyoNight
 window-decoration = false
 clipboard-read = allow
 clipboard-write = allow

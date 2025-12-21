@@ -25,7 +25,7 @@ output * bg ~/.wallpaper fill
 # `swaymsg -t get_outputs`
 #
 # Keep commented to use laptop's primary screen.
-# output "eDP-1" disable
+output "eDP-1" disable
 
 # Set up lock screen.
 exec swayidle -w
