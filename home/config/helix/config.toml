@@ -3,6 +3,10 @@ theme = "tokyonight"
 [editor.soft-wrap]
 enable = true
 
+[editor.file-explorer]
+hidden = true
+git-ignore = true
+
 [keys.normal]
 "esc" = ["collapse_selection", ":w"]
 "home" = ["goto_file_start"]
