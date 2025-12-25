@@ -3,7 +3,7 @@ theme = "tokyonight"
 [editor.soft-wrap]
 enable = true
 
-[editor.file-explorer]
+[editor.file-picker]
 hidden = true
 git-ignore = true
 
