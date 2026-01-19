@@ -74,41 +74,12 @@ fn generate_hardware_file(
 }
 
 pub fn f() -> anyhow::Result<Option<Prompt>> {
-    // TODO: Figure out a better way to handle SOPS.
-    // Check key file before proceeding.
-    // if !crate::core::sops::key_file_exists() {
-    //     let password = inquire::Password::new(
-    //         "Secrets key file does not exist. Please enter the password to generate the file: ",
-    //     )
-    //     .with_display_toggle_enabled()
-    //     .with_display_mode(inquire::PasswordDisplayMode::Hidden)
-    //     .without_confirmation()
-    //     .with_help_message("Press <Ctrl-R> to toggle display")
-    //     .prompt()?;
-
-    //     match crate::core::sops::generate_key_file(password) {
-    //         Ok(_) => println!("Secrets key file generated."),
-    //         Err(e) => {
-    //             eprintln!("Could not generate secrets key file: {}", e);
-    //             return Err(anyhow::anyhow!(e));
-    //         }
-    //     };
-    // }
-
-    // // Check secrets file before proceeding.
-    // if !crate::core::sops::decrypted_secrets_dir_exists() {
-    //     assert!(crate::core::sops::key_file_exists());
-    //     println!("Secrets directory does not exist in home directory. Generating decrypted secrets files.");
-    //     crate::core::sops::generate_secrets_files()?;
-    // }
-
     const FRAMEWORK: &str = "framework";
     const SPYTOWER: &str = "spytower";
     const KVM: &str = "kvm";
-    const LABBOI: &str = "labboi";
     let flake_output = match inquire::Select::new(
         "Which machine would you like to build?",
-        vec![FRAMEWORK, SPYTOWER, LABBOI, KVM],
+        vec![FRAMEWORK, SPYTOWER, KVM],
     )
     .with_vim_mode(true)
     .prompt()?
@@ -116,7 +87,6 @@ pub fn f() -> anyhow::Result<Option<Prompt>> {
         FRAMEWORK => FRAMEWORK,
         SPYTOWER => SPYTOWER,
         KVM => KVM,
-        LABBOI => LABBOI,
         _ => unreachable!(),
     };
 
@@ -134,9 +104,8 @@ pub fn f() -> anyhow::Result<Option<Prompt>> {
             _ => unreachable!(),
         };
 
-    // FIXME: Remove impure flag after figuring out sops.
     let command = format!(
-        "sudo nixos-rebuild {subcommand} --upgrade --impure --flake .#{output}",
+        "sudo nixos-rebuild {subcommand} --upgrade --flake .#{output}",
         subcommand = build_option,
         output = flake_output,
     );

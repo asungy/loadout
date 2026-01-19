@@ -15,7 +15,7 @@ let
     htop           # Resource viewer
     jq             # JSON utility
     keepassxc      # Password manager
-    krita          # Raster graphics editor
+    # krita          # Raster graphics editor
     obsidian       # Note-taking app
     rclone         # Cloud client
     remmina        # RDP Client
