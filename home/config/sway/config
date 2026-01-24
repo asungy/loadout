@@ -35,6 +35,9 @@ exec swayidle -w
 exec systemctl --user import-environment XDG_SESSION_TYPE XDG_CURRENT_DESKTOP
 exec dbus-update-activation-environment WAYLAND_DISPLAY
 
+# Run fcitx5.
+exec fcitx5 -d
+
 # Start a terminal
 bindsym $win+t exec $term
 

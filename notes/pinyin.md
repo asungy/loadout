@@ -1,18 +1,8 @@
 # Pinyin Keyboard
 
-The system configurations are already set to make Pinyin available using ibus.
-Note: Hyprland and ibus have their own separate keyboard configurations.
+As of this writing, this NixOS configuration uses fcitx5 to manage input methods.
 
-To enable, Pinyin (and disable US), an instance of the ibus engine needs to be
-running:
-```shell
-ibus start
-```
+Sway should be setup to autostart fcitx5.
 
-Once the ibus engine is running, the Pinyin engine needs to be set:
-```shell
-ibus engine libpinyin
-```
+If you need to configure fcitx5, run `fcitx5-configtool`.
 
-Pinyin won't work in certain applications like the terminal but they should
-work in the browser and Obsidian.
