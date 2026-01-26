@@ -5,7 +5,7 @@ enable = true
 
 [editor.file-picker]
 hidden = false
-git-ignore = false
+git-ignore = true
 
 [keys.normal]
 "esc" = ["collapse_selection", ":w"]
