@@ -1,130 +1,53 @@
-use crate::prompt::Prompt;
+use std::process::Stdio;
 
-fn generate_hardware_file(
-    dest_dir: &std::path::Path,
-    copy_default_config: bool,
-) -> anyhow::Result<()> {
-    let tempdir = tempfile::Builder::new()
-        .prefix("nixos-generate-hardware")
-        .tempdir()?;
-
-    // Generate NixOS configuration files.
-    |dir: &std::path::Path| -> anyhow::Result<()> {
-        let output = std::process::Command::new("nixos-generate-config")
-            .args([
-                "--dir",
-                dir.to_str().ok_or(anyhow::anyhow!(
-                    "Could not get string reference to tempdir path"
-                ))?,
-            ])
-            .output()?;
-
-        if output.status.success() {
-            println!("{}", std::str::from_utf8(&output.stdout).unwrap());
-            Ok(())
-        } else {
-            eprintln!("{}", std::str::from_utf8(&output.stderr).unwrap());
-            Err(anyhow::anyhow!(
-                "Error occurred generating new nixos configuration files."
-            ))
-        }
-    }(&tempdir.path())?;
-
-    // Copy hardware file.
-    let source = tempdir.path().join("hardware-configuration.nix");
-    |source: &std::path::Path| -> anyhow::Result<()> {
-        let dest = dest_dir.join("hardware-configuration.nix");
-        let output = std::process::Command::new("cp")
-            .args([source.to_str().unwrap(), dest.to_str().unwrap()])
-            .output()?;
-
-        if output.status.success() {
-            println!("{}", std::str::from_utf8(&output.stdout).unwrap());
-            println!("Copied hardware file to `{}`.", dest.to_str().unwrap());
-            Ok(())
-        } else {
-            eprintln!("{}", std::str::from_utf8(&output.stderr).unwrap());
-            Err(anyhow::anyhow!(
-                "Error copying hardware configuration file."
-            ))
-        }
-    }(&source)?;
-
-    if copy_default_config {
-        // Copy configuration file.
-        let source = tempdir.path().join("configuration.nix");
-        |source: &std::path::Path| -> anyhow::Result<()> {
-            let dest = dest_dir.join("default.nix");
-            let output = std::process::Command::new("cp")
-                .args([source.to_str().unwrap(), dest.to_str().unwrap()])
-                .output()?;
-
-            if output.status.success() {
-                println!("{}", std::str::from_utf8(&output.stdout).unwrap());
-                println!("Copied configuration file to `{}`.", dest.to_str().unwrap());
-                Ok(())
-            } else {
-                eprintln!("{}", std::str::from_utf8(&output.stderr).unwrap());
-                Err(anyhow::anyhow!("Error copying NixOS configuration file."))
-            }
-        }(&source)?;
-    }
-
-    Ok(())
-}
-
-pub fn f() -> anyhow::Result<Option<Prompt>> {
+pub fn run() -> anyhow::Result<()> {
     const FRAMEWORK: &str = "framework";
     const SPYTOWER: &str = "spytower";
     const KVM: &str = "kvm";
-    let flake_output = match inquire::Select::new(
+
+    let machine = inquire::Select::new(
         "Which machine would you like to build?",
         vec![FRAMEWORK, SPYTOWER, KVM],
     )
     .with_vim_mode(true)
-    .prompt()?
-    {
-        FRAMEWORK => FRAMEWORK,
-        SPYTOWER => SPYTOWER,
-        KVM => KVM,
-        _ => unreachable!(),
-    };
+    .prompt()?;
 
     const SWITCH: &str = "switch";
-    const TEST: &str = "boot";
-    const BOOT: &str = "test";
-    let build_option =
-        match inquire::Select::new("Select a build option:", vec![SWITCH, TEST, BOOT])
-            .with_vim_mode(true)
-            .prompt()?
-        {
-            SWITCH => SWITCH,
-            TEST => TEST,
-            BOOT => BOOT,
-            _ => unreachable!(),
-        };
+    const BOOT: &str = "boot";
+    const TEST: &str = "test";
 
-    let command = format!(
-        "sudo nixos-rebuild {subcommand} --upgrade --flake .#{output}",
-        subcommand = build_option,
-        output = flake_output,
-    );
+    let subcommand = inquire::Select::new("Select a build option:", vec![SWITCH, BOOT, TEST])
+        .with_vim_mode(true)
+        .prompt()?;
 
-    println!("Running: {}", command);
-    let output = std::process::Command::new("sh")
-        .arg("-c")
-        .arg(command)
-        .output()
-        .unwrap();
-    if output.status.success() {
-        println!("{}", std::str::from_utf8(&output.stdout).unwrap());
-    } else {
-        eprintln!("{}", std::str::from_utf8(&output.stderr).unwrap());
-        return Err(anyhow::anyhow!(format!(
-            "Error building {} output",
-            flake_output.to_string(),
-        )));
+    let upgrade = inquire::Confirm::new("Update flake inputs before building?")
+        .with_default(false)
+        .prompt()?;
+
+    let flake_target = format!(".#{machine}");
+    let mut cmd = std::process::Command::new("sudo");
+    cmd.arg("nixos-rebuild")
+        .arg(subcommand)
+        .arg("--flake")
+        .arg(&flake_target);
+
+    if upgrade {
+        cmd.arg("--upgrade");
     }
 
-    Ok(None)
+    println!(
+        "Running: sudo nixos-rebuild {subcommand} --flake {flake_target}{}",
+        if upgrade { " --upgrade" } else { "" }
+    );
+
+    let status = cmd
+        .stdout(Stdio::inherit())
+        .stderr(Stdio::inherit())
+        .status()?;
+
+    if !status.success() {
+        return Err(anyhow::anyhow!("Error building {machine} output"));
+    }
+
+    Ok(())
 }
