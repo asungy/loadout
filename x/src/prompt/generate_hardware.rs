@@ -4,10 +4,11 @@ pub fn run() -> anyhow::Result<()> {
     const FRAMEWORK: &str = "framework";
     const SPYTOWER: &str = "spytower";
     const KVM: &str = "kvm";
+    const LABBOI: &str = "labboi";
 
     let machine = inquire::Select::new(
         "Which machine are you generating hardware config for?",
-        vec![FRAMEWORK, SPYTOWER, KVM],
+        vec![FRAMEWORK, SPYTOWER, KVM, LABBOI],
     )
     .with_vim_mode(true)
     .prompt()?;
