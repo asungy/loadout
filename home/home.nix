@@ -24,7 +24,6 @@ let
     tree           # File tree viewer
     vlc            # Video player
     zoom-us        # Video conferencing
-    tailscale
     claude-code    # LLM coding assistant
   ];
 in
