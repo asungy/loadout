@@ -1,44 +1,25 @@
 mod build_home_manager;
 mod build_system;
-mod decrypt_secrets;
-pub mod new_sops_key;
+mod generate_hardware;
 mod set_monitor;
 mod set_wallpaper;
 
-pub struct Prompt {
-    pub next: Box<dyn Fn() -> anyhow::Result<Option<Prompt>>>,
-}
-
-pub fn initial() -> anyhow::Result<Option<Prompt>> {
+pub fn run() -> anyhow::Result<()> {
     const A: &str = "Build home manager";
     const B: &str = "Build system";
     const C: &str = "Set wallpaper";
-    const D: &str = "Create new sops key";
-    const E: &str = "Decrypt secrets to home directory";
-    const F: &str = "Set monitor";
+    const D: &str = "Set monitor";
+    const E: &str = "Generate hardware config";
 
-    match inquire::Select::new("What would you like to do?", vec![A, B, C, F])
+    match inquire::Select::new("What would you like to do?", vec![A, B, C, D, E])
         .with_vim_mode(true)
         .prompt()?
     {
-        A => Ok(Some(Prompt {
-            next: Box::new(build_home_manager::f),
-        })),
-        B => Ok(Some(Prompt {
-            next: Box::new(build_system::f),
-        })),
-        C => Ok(Some(Prompt {
-            next: Box::new(set_wallpaper::f),
-        })),
-        D => Ok(Some(Prompt {
-            next: Box::new(new_sops_key::f),
-        })),
-        E => Ok(Some(Prompt {
-            next: Box::new(decrypt_secrets::f),
-        })),
-        F => Ok(Some(Prompt {
-            next: Box::new(set_monitor::f),
-        })),
+        A => build_home_manager::run(),
+        B => build_system::run(),
+        C => set_wallpaper::run(),
+        D => set_monitor::run(),
+        E => generate_hardware::run(),
         _ => unreachable!(),
     }
 }

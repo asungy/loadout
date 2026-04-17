@@ -1,9 +1,8 @@
 {
   environment.variables = {
     # Set IBUS environment variables.
-    GTK_IM_MODULE = "ibus";
-    QT_IM_MODULE = "ibus";
-    XMODIFIERS = "@im=ibus";
+    QT_IM_MODULE = "fcitx";
+    XMODIFIERS = "@im=fcitx";
 
     # Set default editor.
     EDITOR = "hx";

@@ -15,7 +15,6 @@ let
     htop           # Resource viewer
     jq             # JSON utility
     keepassxc      # Password manager
-    krita          # Raster graphics editor
     obsidian       # Note-taking app
     rclone         # Cloud client
     remmina        # RDP Client
@@ -25,7 +24,7 @@ let
     tree           # File tree viewer
     vlc            # Video player
     zoom-us        # Video conferencing
-    tailscale
+    claude-code    # LLM coding assistant
   ];
 in
 {

@@ -20,12 +20,16 @@ set $menu wofi --conf=$HOME/.config/wofi/config
 # Set wallpaper.
 output * bg ~/.wallpaper fill
 
+
 # Disable primary (laptop) monitor because monitor mirroring is not supported in Sway.
 #
 # `swaymsg -t get_outputs`
 #
 # Keep commented to use laptop's primary screen.
-output "eDP-1" disable
+# output "eDP-1" disable
+
+# Set zoom on laptop.
+output "eDP-1" scale 1.5
 
 # Set up lock screen.
 exec swayidle -w
@@ -34,6 +38,9 @@ exec swayidle -w
 # Reference: https://elis.nu/blog/2021/02/detailed-setup-of-screen-sharing-in-sway/
 exec systemctl --user import-environment XDG_SESSION_TYPE XDG_CURRENT_DESKTOP
 exec dbus-update-activation-environment WAYLAND_DISPLAY
+
+# Run fcitx5.
+exec fcitx5 -d
 
 # Start a terminal
 bindsym $win+t exec $term

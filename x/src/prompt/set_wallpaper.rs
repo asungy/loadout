@@ -1,68 +1,49 @@
-use crate::prompt::Prompt;
+use std::process::Stdio;
 
-pub fn f() -> anyhow::Result<Option<Prompt>> {
-    const ELDEN_RING: &str = "Elden Ring";
-    const SKYRIM: &str = "Skyrim";
-    const MUSASHI: &str = "Musashi Miyamoto";
-    const NIXOS_HONEYCOMBS: &str = "NixOS Honeycombs";
+pub fn run() -> anyhow::Result<()> {
+    let wallpaper_dir =
+        std::fs::canonicalize(std::env::current_dir()?.join("wallpapers"))?;
 
-    let wallpaper_dir = {
-        let dir = std::env::current_dir()?.join("wallpapers");
-        std::fs::canonicalize(dir)?
-    };
+    let mut entries: Vec<std::path::PathBuf> = std::fs::read_dir(&wallpaper_dir)?
+        .filter_map(|e| e.ok())
+        .map(|e| e.path())
+        .filter(|p| p.is_file())
+        .collect();
+    entries.sort();
 
-    let wallpaper_file = match inquire::Select::new("Choose a wallpaper:", vec![
-        ELDEN_RING,
-        SKYRIM,
-        MUSASHI,
-        NIXOS_HONEYCOMBS,
-    ])
+    let names: Vec<String> = entries
+        .iter()
+        .filter_map(|p| p.file_name())
+        .filter_map(|n| n.to_str())
+        .map(|s| s.to_string())
+        .collect();
+
+    if names.is_empty() {
+        return Err(anyhow::anyhow!("No wallpapers found in wallpapers/"));
+    }
+
+    let selected = inquire::Select::new("Choose a wallpaper:", names)
         .with_vim_mode(true)
-        .prompt()?
-    {
-        ELDEN_RING => std::path::Path::new(&wallpaper_dir).join("elden_ring.png"),
-        SKYRIM => std::path::Path::new(&wallpaper_dir).join("skyrim.jpg"),
-        MUSASHI => std::path::Path::new(&wallpaper_dir).join("miyamoto-musashi.png"),
-        NIXOS_HONEYCOMBS => std::path::Path::new(&wallpaper_dir).join("nixos_honeycombs.png"),
-        _ => unreachable!(),
-    };
+        .prompt()?;
 
-    // Copy wallpaper.
-    {
-        let dest = home::home_dir().unwrap().join(".wallpaper");
-        let output = std::process::Command::new("cp")
-            .args([
-                wallpaper_file.to_str().unwrap(),
-                dest.to_str().unwrap(),
-            ])
-            .output()?;
+    let src = wallpaper_dir.join(&selected);
+    let dest = home::home_dir()
+        .ok_or_else(|| anyhow::anyhow!("Could not determine home directory"))?
+        .join(".wallpaper");
 
-        if output.status.success() {
-            println!("{}", std::str::from_utf8(&output.stdout).unwrap());
-            println!(
-                "Copied `{wallpaper}` to `{dest}`.",
-                wallpaper = wallpaper_file.to_str().unwrap(),
-                dest = dest.to_str().unwrap(),
-            );
-        } else {
-            eprintln!("{}", std::str::from_utf8(&output.stderr).unwrap());
-            return Err(anyhow::anyhow!("Error copying wallpaper"))
-        }
+    std::fs::copy(&src, &dest)?;
+    println!("Copied `{}` to `{}`.", src.display(), dest.display());
+
+    let status = std::process::Command::new("swaymsg")
+        .args(["reload"])
+        .stdout(Stdio::inherit())
+        .stderr(Stdio::inherit())
+        .status()?;
+
+    if !status.success() {
+        return Err(anyhow::anyhow!("Error reloading sway configuration"));
     }
 
-    // Reload configuration.
-    {
-        let output = std::process::Command::new("swaymsg")
-            .args(["reload"])
-            .output()?;
-        if output.status.success() {
-            println!("{}", std::str::from_utf8(&output.stdout).unwrap());
-            println!("Reloaded sway configuration.");
-        } else {
-            eprintln!("{}", std::str::from_utf8(&output.stderr).unwrap());
-            return Err(anyhow::anyhow!("Error copying wallpaper"))
-        }
-    }
-
-    Ok(None)
+    println!("Reloaded sway configuration.");
+    Ok(())
 }

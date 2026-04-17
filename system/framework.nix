@@ -15,6 +15,8 @@ in
     # ./modules/protonvpn.nix
     ./modules/tablet.nix
     ./modules/udev
+    ./modules/ssh.nix
+    ./modules/tailscale.nix
     ./modules/user.nix
     ./modules/virtualisation.nix
     ./modules/wayland.nix

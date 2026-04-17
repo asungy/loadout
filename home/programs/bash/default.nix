@@ -3,7 +3,6 @@
 let
   shellAliases = {
     cpwd = "pwd | wl-copy";
-    f = "fuck";
     l = "eza";
     sway = "sway --unsupported-gpu";
     xv = "nix run github:asungy/xvim";

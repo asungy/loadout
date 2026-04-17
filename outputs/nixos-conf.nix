@@ -6,7 +6,7 @@
       inherit system;
       config = {
         allowUnfree = true;
-        permittedInsecurePackages = [ "ventoy-1.1.07" ];
+        permittedInsecurePackages = [ "ventoy-1.1.10" ];
       };
     };
   in
@@ -40,14 +40,4 @@
     ];
     specialArgs = { inherit inputs; username = "asungy"; };
   };
-
-  # Home lab output.
-  # labboi = nixosSystem {
-  #   inherit pkgs system;
-  #   modules = [
-  #     ../system/machine/labboi
-  #     ../system/labboi
-  #   ];
-  #   specialArgs = { inherit inputs; username = "asungy"; };
-  # };
 }

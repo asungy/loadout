@@ -15,6 +15,7 @@ in
     # ./modules/protonvpn.nix
     ./modules/tablet.nix
     ./modules/udev
+    ./modules/ssh.nix
     ./modules/user.nix
     ./modules/virtualisation.nix
     ./modules/wayland.nix
@@ -25,18 +26,6 @@ in
     ++ packages.misc
     ;
 
-  # Reference: https://nixos.wiki/wiki/SSH
-  services.openssh = {
-    enable = true;
-    ports = [ 22 ];
-    settings = {
-      PasswordAuthentication = true;
-      AllowUsers = null;
-      UseDns = true;
-      X11Forwarding = false;
-      PermitRootLogin = "no";
-    };
-  };
   networking.firewall.allowedTCPPorts = [ 22 ];
 
   # This value determines the NixOS release from which the default

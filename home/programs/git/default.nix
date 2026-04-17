@@ -1,15 +1,9 @@
 # Reference: https://github.com/nix-community/home-manager/blob/master/modules/programs/git.nix
-{ pkgs, ... } :
-let
-  gitConfig = {
-    core = {
-      editor = "hx";
-    };
-    init.defaultBranch = "main";
-  };
-
-  deltaConfig = {
+{ pkgs, ... }:
+{
+  programs.delta = {
     enable = true;
+    enableGitIntegration = true;
     options = {
       line-numbers = true;
       navigate = true;
@@ -18,17 +12,16 @@ let
     };
   };
 
-  signingConfig = {
-    key = "1E92C5ADF20FAFDB85F4D7659CBD0E31D59E4E72";
-    signByDefault = true;
-  };
-in
-{
   programs.git = {
-    delta = deltaConfig;
     enable = true;
-    extraConfig = gitConfig;
-    userEmail = "62207329+asungy@users.noreply.github.com";
-    userName = "asungy";
+    signing.format = "openpgp";
+    settings = {
+      core.editor = "hx";
+      init.defaultBranch = "main";
+      user = {
+        email = "62207329+asungy@users.noreply.github.com";
+        name = "asungy";
+      };
+    };
   };
 }

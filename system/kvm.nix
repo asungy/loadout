@@ -10,6 +10,7 @@ in
     ./modules/graphics/default.nix
     ./modules/i18n.nix
     ./modules/nix_daemon.nix
+    ./modules/ssh.nix
     ./modules/user.nix
     ./modules/wayland.nix
   ];
@@ -19,18 +20,6 @@ in
     ++ packages.misc
     ;
 
-  # Reference: https://nixos.wiki/wiki/SSH
-  services.openssh = {
-    enable = true;
-    ports = [ 22 ];
-    settings = {
-      PasswordAuthentication = true;
-      AllowUsers = null;
-      UseDns = true;
-      X11Forwarding = false;
-      PermitRootLogin = "no";
-    };
-  };
   networking.firewall.allowedTCPPorts = [ 22 ];
 
   # This option defines the first version of NixOS you have installed on this particular machine,
