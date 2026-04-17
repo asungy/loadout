@@ -8,6 +8,7 @@
     password = "";
     openssh.authorizedKeys.keys = [
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFdsO5C3hrbizm+ChTjGNPsKG6VKM6uWSEfF2t9aqIHB termux@phone"
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIL0tQTPfgUokkNR0aKsBVFs+tf+efUyx7T7cK4WuxhJh asungy@spytower"
     ];
   };
   users.groups.plugdev.members = [ username ];
