@@ -28,5 +28,6 @@
   misc = with pkgs; [
     pavucontrol               # PulseAudio GUI
     pinentry-curses           # GnuPG interface
+    # plover_5
   ];
 }
