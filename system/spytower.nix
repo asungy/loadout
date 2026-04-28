@@ -13,6 +13,7 @@ in
     ./modules/networking.nix
     ./modules/nix_daemon.nix
     # ./modules/protonvpn.nix
+    ./modules/plover.nix
     ./modules/tablet.nix
     ./modules/udev
     ./modules/ssh.nix
