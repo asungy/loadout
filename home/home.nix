@@ -16,6 +16,7 @@ let
     jq             # JSON utility
     keepassxc      # Password manager
     obsidian       # Note-taking app
+    opencode    # LLM coding assistant
     rclone         # Cloud client
     remmina        # RDP Client
     ripgrep        # A better `grep`
@@ -24,7 +25,6 @@ let
     tree           # File tree viewer
     vlc            # Video player
     zoom-us        # Video conferencing
-    claude-code    # LLM coding assistant
   ];
 in
 {
